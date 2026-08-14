@@ -42,8 +42,8 @@ function makePosition(
   raw: number,
 ): Position {
   const path = reducePath(raw);
-  const value = path[path.length - 1];
-  return { key, label, question, path, value, archetype: ARCHETYPES[value] };
+  const value = path[path.length - 1] ?? 9;
+  return { key, label, question, path, value, archetype: ARCHETYPES[value]! };
 }
 
 export function buildChart(date: Date): Chart {

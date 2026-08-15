@@ -4,7 +4,9 @@ import { Orb } from "@/components/mirror/Orb";
 import { buildChart, formatDate, meeting, tensionText, type Position } from "@/lib/numerology";
 
 export const Route = createFileRoute("/code")({
-  validateSearch: (s: Record<string, unknown>) => ({ d: typeof s.d === "string" ? s.d : "" }),
+  validateSearch: (s: Record<string, unknown>) => ({
+    d: typeof s["d"] === "string" ? (s["d"] as string) : "",
+  }),
   head: () => ({
     meta: [
       { title: "Ваш код — Зеркало себя" },
@@ -20,7 +22,7 @@ export const Route = createFileRoute("/code")({
       },
     ],
   }),
-  component: CodePage;
+  component: CodePage,
 });
 
 function Reveal({ children }: { children: React.ReactNode }) {

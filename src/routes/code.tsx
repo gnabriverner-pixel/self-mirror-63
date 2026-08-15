@@ -20,7 +20,7 @@ export const Route = createFileRoute("/code")({
       },
     ],
   }),
-  component: CodePage;
+  component: CodePage,
 });
 
 function Reveal({ children }: { children: React.ReactNode }) {

@@ -9,7 +9,11 @@
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "routes:gen": "node scripts/routes.mjs",
+    "routes:check": "node scripts/routes.mjs --check",
+    "predev": "node scripts/routes.mjs",
+    "prebuild": "node scripts/routes.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

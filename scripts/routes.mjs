@@ -16,7 +16,23 @@ const target = path.join(root, "src", "routeTree.gen.ts");
 
 const before = existsSync(target) ? await readFile(target, "utf8") : null;
 
-const config = await getConfig({ target: "react", autoCodeSplitting: true }, root);
+// Футер, который добавляет плагин TanStack Start (типы Register).
+const routeTreeFileFooter = [
+  `import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}`,
+];
+
+const config = await getConfig(
+  { target: "react", autoCodeSplitting: true, routeTreeFileFooter },
+  root,
+);
 const generator = new Generator({ config, root });
 await generator.run();
 

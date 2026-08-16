@@ -31,18 +31,14 @@ function Door({
   tag,
   title,
   text,
-  cta,
   done,
-  to,
-  hash,
+  children,
 }: {
   tag: string;
   title: string;
   text: string;
-  cta: string;
   done: boolean;
-  to: string;
-  hash?: string;
+  children: React.ReactNode;
 }) {
   return (
     <article className="flex flex-col rounded-sm border border-border bg-card/40 p-7 backdrop-blur-sm transition-colors hover:border-gold/40">
@@ -52,16 +48,13 @@ function Door({
       {done && (
         <p className="mt-4 text-xs uppercase tracking-wider-xs text-gold/70">Уже открыто</p>
       )}
-      <Link
-        to={to}
-        hash={hash}
-        className="mt-7 rounded-sm border border-gold/60 bg-gold/10 px-6 py-4 text-center text-xs uppercase tracking-wider-xs text-gold transition-all hover:bg-gold/20 hover:shadow-[var(--shadow-halo)]"
-      >
-        {done ? "Вернуться" : cta}
-      </Link>
+      <div className="mt-7">{children}</div>
     </article>
   );
 }
+
+const doorCta =
+  "block rounded-sm border border-gold/60 bg-gold/10 px-6 py-4 text-center text-xs uppercase tracking-wider-xs text-gold transition-all hover:bg-gold/20 hover:shadow-[var(--shadow-halo)]";
 
 function Index() {
   const navigate = useNavigate();
@@ -98,19 +91,22 @@ function Index() {
               tag="Личный миф · сказка про тебя"
               title="Войти через образы"
               text="4 образных вопроса. Литературная история, рождающаяся из ваших собственных символов."
-              cta="Войти через образы"
               done={journey.mythDone}
-              to="/myth"
-            />
+            >
+              <Link to="/myth" className={doorCta}>
+                {journey.mythDone ? "Вернуться к мифу" : "Войти через образы"}
+              </Link>
+            </Door>
             <Door
               tag="Цифровой код"
               title="Войти через дату"
               text="Только дата рождения. Пять ключей и символическая карта вашей природы."
-              cta="Войти через дату"
               done={journey.codeDone}
-              to="/"
-              hash="врата"
-            />
+            >
+              <Link to="/" hash="врата" className={doorCta}>
+                Войти через дату
+              </Link>
+            </Door>
           </div>
 
           {journey.mythDone && journey.codeDone && (

@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Orb } from "@/components/mirror/Orb";
+import { PracticeCard } from "@/components/mirror/PracticeCard";
+import { useJourney } from "@/lib/journey";
 import { buildChart, formatDate, meeting, tensionText, type Position } from "@/lib/numerology";
 
 export const Route = createFileRoute("/code")({
@@ -39,6 +41,7 @@ function Reveal({ children }: { children: React.ReactNode }) {
 
 function Key({ p, index }: { p: Position; index: string }) {
   return (
+    <>
     <div className="flex flex-col items-center gap-8 text-center md:flex-row md:items-start md:gap-12 md:text-left">
       <Orb archetype={p.archetype} size={220} />
       <div className="max-w-xl">
@@ -53,12 +56,19 @@ function Key({ p, index }: { p: Position; index: string }) {
         <p className="mt-5 text-[15px] leading-relaxed text-foreground/70">{p.archetype.action}</p>
       </div>
     </div>
+    <PracticeCard a={p.archetype} />
+    </>
   );
 }
 
 function CodePage() {
   const { d } = Route.useSearch();
   const [step, setStep] = useState(0);
+  const { journey, update } = useJourney();
+
+  useEffect(() => {
+    if (step >= 7 && d) update({ codeDone: true, birthDate: d });
+  }, [step, d, update]);
 
   const parts = d.split("-").map(Number);
   const valid = parts.length === 3 && parts.every((x) => !Number.isNaN(x));
@@ -81,15 +91,25 @@ function CodePage() {
 
   const steps = 8;
   const next = () => setStep((s) => Math.min(s + 1, steps));
+  const KEY_STEPS = [1, 2, 4, 5, 6];
+  const opened = KEY_STEPS.filter((s) => step >= s).length;
 
   const NextButton = ({ label }: { label: string }) => (
-    <div className="mt-14 text-center">
+    <div className="mt-14 flex flex-col items-center gap-5 text-center">
       <button
         onClick={next}
         className="rounded-sm border border-gold/60 bg-gold/10 px-9 py-4 text-xs uppercase tracking-wider-xs text-gold transition-all hover:bg-gold/20 hover:shadow-[var(--shadow-halo)]"
       >
         {label}
       </button>
+      {step < 7 && (
+        <button
+          onClick={() => setStep(7)}
+          className="text-xs uppercase tracking-wider-xs text-muted-foreground transition-colors hover:text-gold"
+        >
+          Показать карту целиком
+        </button>
+      )}
     </div>
   );
 
@@ -97,6 +117,16 @@ function CodePage() {
 
   return (
     <main className="mx-auto max-w-4xl px-6 pb-32">
+      {step > 0 && (
+        <div className="sticky top-0 z-10 -mx-6 mb-2 flex items-center justify-between gap-4 border-b border-border/60 bg-background/80 px-6 py-3 backdrop-blur-md">
+          <p className="text-xs uppercase tracking-wider-xs text-gold/80">
+            {Math.max(opened, 1)} / 5 · Ваша карта раскрывается
+          </p>
+          <Link to="/" className="text-xs uppercase tracking-wider-xs text-muted-foreground hover:text-gold">
+            Выйти
+          </Link>
+        </div>
+      )}
       <header className="flex min-h-[70svh] flex-col items-center justify-center text-center">
         <p className="text-xs uppercase tracking-wider-xs text-gold/80">{formatDate(date)}</p>
         <h1 className="mt-8 text-5xl leading-tight text-balance sm:text-6xl">

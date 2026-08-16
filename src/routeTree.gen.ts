@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CodeRouteImport } from './routes/code'
+import { Route as MythRouteImport } from './routes/myth'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const CodeRoute = CodeRouteImport.update({
   path: '/code',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MythRoute = MythRouteImport.update({
+  id: '/myth',
+  path: '/myth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/code': typeof CodeRoute
+  '/myth': typeof MythRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/code': typeof CodeRoute
+  '/myth': typeof MythRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/code': typeof CodeRoute
+  '/myth': typeof MythRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/code'
+  fullPaths: '/' | '/code' | '/myth'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/code'
-  id: '__root__' | '/' | '/code'
+  to: '/' | '/code' | '/myth'
+  id: '__root__' | '/' | '/code' | '/myth'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CodeRoute: typeof CodeRoute
+  MythRoute: typeof MythRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/myth': {
+      id: '/myth'
+      path: '/myth'
+      fullPath: '/myth'
+      preLoaderRoute: typeof MythRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CodeRoute: CodeRoute,
+  MythRoute: MythRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CodeRouteImport } from './routes/code'
+import { Route as MeetingRouteImport } from './routes/meeting'
 import { Route as MythRouteImport } from './routes/myth'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const CodeRoute = CodeRouteImport.update({
   path: '/code',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MeetingRoute = MeetingRouteImport.update({
+  id: '/meeting',
+  path: '/meeting',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MythRoute = MythRouteImport.update({
   id: '/myth',
   path: '/myth',
@@ -32,30 +38,34 @@ const MythRoute = MythRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/code': typeof CodeRoute
+  '/meeting': typeof MeetingRoute
   '/myth': typeof MythRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/code': typeof CodeRoute
+  '/meeting': typeof MeetingRoute
   '/myth': typeof MythRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/code': typeof CodeRoute
+  '/meeting': typeof MeetingRoute
   '/myth': typeof MythRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/code' | '/myth'
+  fullPaths: '/' | '/code' | '/meeting' | '/myth'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/code' | '/myth'
-  id: '__root__' | '/' | '/code' | '/myth'
+  to: '/' | '/code' | '/meeting' | '/myth'
+  id: '__root__' | '/' | '/code' | '/meeting' | '/myth'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CodeRoute: typeof CodeRoute
+  MeetingRoute: typeof MeetingRoute
   MythRoute: typeof MythRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/meeting': {
+      id: '/meeting'
+      path: '/meeting'
+      fullPath: '/meeting'
+      preLoaderRoute: typeof MeetingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/myth': {
       id: '/myth'
       path: '/myth'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CodeRoute: CodeRoute,
+  MeetingRoute: MeetingRoute,
   MythRoute: MythRoute,
 }
 export const routeTree = rootRouteImport

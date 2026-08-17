@@ -160,8 +160,8 @@ function Index() {
           </p>
         </div>
         <div className="grid gap-5 md:grid-cols-2">
-          {(allArchetypes ? ARCHETYPE_LIST : teaser).map((a) => (
-            <ArchetypeCard key={a.n} a={a} />
+          {(allArchetypes ? ARCHETYPE_LIST : teaser).map((a, i) => (
+            <ArchetypeCard key={a.n} a={a} index={i} />
           ))}
         </div>
         <div className="mt-10 text-center">

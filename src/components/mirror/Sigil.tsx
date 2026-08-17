@@ -27,10 +27,10 @@ function glyph(n: number) {
             return (
               <line
                 key={i}
-                x1={100 + Math.cos(a) * r1}
-                y1={100 + Math.sin(a) * r1}
-                x2={100 + Math.cos(a) * r2}
-                y2={100 + Math.sin(a) * r2}
+                x1={px(Math.cos(a) * (r1))}
+                y1={px(Math.sin(a) * (r1))}
+                x2={px(Math.cos(a) * (r2))}
+                y2={px(Math.sin(a) * (r2))}
               />
             );
           })}
@@ -70,13 +70,13 @@ function glyph(n: number) {
         <>
           {[0, 1, 2, 3, 4].map((i) => {
             const a = (i * 2 * Math.PI) / 5 - Math.PI / 2;
-            return <circle key={i} cx={100 + Math.cos(a) * 50} cy={100 + Math.sin(a) * 50} r="4" />;
+            return <circle key={i} cx={px(Math.cos(a) * (50))} cy={px(Math.sin(a) * (50))} r="4" />;
           })}
           <path
             d={Array.from({ length: 5 })
               .map((_, i) => {
                 const a = (((i * 2) % 5) * 2 * Math.PI) / 5 - Math.PI / 2;
-                return `${i ? "L" : "M"}${100 + Math.cos(a) * 50} ${100 + Math.sin(a) * 50}`;
+                return `${i ? "L" : "M"}${px(Math.cos(a) * (50))} ${px(Math.sin(a) * (50))}`;
               })
               .join(" ") + " Z"}
             strokeWidth={0.7}

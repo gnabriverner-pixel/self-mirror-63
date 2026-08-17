@@ -56,10 +56,10 @@ export function Orb({
             return (
               <line
                 key={i}
-                x1={100 + Math.cos(a) * 88}
-                y1={100 + Math.sin(a) * 88}
-                x2={100 + Math.cos(a) * (i % 3 ? 91 : 94)}
-                y2={100 + Math.sin(a) * (i % 3 ? 91 : 94)}
+                x1={px(Math.cos(a) * (88))}
+                y1={px(Math.sin(a) * (88))}
+                x2={px(Math.cos(a) * ((i % 3 ? 91 : 94)))}
+                y2={px(Math.sin(a) * ((i % 3 ? 91 : 94)))}
                 stroke="currentColor"
                 strokeWidth="0.4"
               />

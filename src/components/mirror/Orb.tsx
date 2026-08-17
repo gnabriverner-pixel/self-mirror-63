@@ -9,6 +9,8 @@ const oka = (s: string, a: number) => {
   const [l, c, h] = s.split(" ");
   return `oklch(${l}% ${c} ${h} / ${a}%)`;
 };
+/** округление до 2 знаков — стабильные координаты между сервером и клиентом */
+const px = (v: number) => Math.round((100 + v) * 100) / 100;
 
 export function Orb({
   archetype,

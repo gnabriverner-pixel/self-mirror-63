@@ -2,6 +2,9 @@
  * Уникальный символ-сигил для каждого из девяти архетипов.
  * Рисуется поверх сферы тонкой золотой линией и «прорисовывается» при появлении.
  */
+/** округление до 2 знаков — стабильные координаты между сервером и клиентом */
+const px = (v: number) => Math.round((100 + v) * 100) / 100;
+
 export function Sigil({ n, className = "" }: { n: number; className?: string }) {
   const s = { fill: "none", stroke: "currentColor", strokeLinecap: "round", strokeLinejoin: "round" } as const;
   return (

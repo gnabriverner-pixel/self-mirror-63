@@ -1,0 +1,374 @@
+/*
+ * DONOR MODULE — archetype-art
+ * Материальный язык девяти объектов: алебастр и обсидиан, гравировка, боковой свет.
+ * Motion law: появление → проход света → проявление геометрии → покой.
+ * Файл самодостаточен: не зависит от Tailwind и от токенов основного проекта.
+ */
+
+.aa-emblem {
+  position: relative;
+  display: block;
+  margin: 0;
+  flex: none;
+  isolation: isolate;
+  border-radius: 2px;
+  overflow: hidden;
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.aa-emblem[data-variant="alabaster"] {
+  --aa-plate-a: oklch(0.93 0.012 85);
+  --aa-plate-b: oklch(0.82 0.018 76);
+  --aa-plate-c: oklch(0.7 0.022 70);
+  --aa-ink: oklch(0.34 0.026 62);
+  --aa-mass: oklch(0.89 0.014 82);
+  --aa-void: oklch(0.62 0.024 68);
+  --aa-shade: oklch(0.55 0.03 66 / 55%);
+  --aa-sheen: oklch(1 0 0);
+  --aa-edge: oklch(0.3 0.03 60 / 30%);
+}
+
+.aa-emblem[data-variant="obsidian"] {
+  --aa-plate-a: oklch(0.23 0.018 262);
+  --aa-plate-b: oklch(0.16 0.02 264);
+  --aa-plate-c: oklch(0.11 0.016 266);
+  --aa-ink: oklch(0.82 0.055 78);
+  --aa-mass: oklch(0.27 0.022 264);
+  --aa-void: oklch(0.1 0.014 266);
+  --aa-shade: oklch(0.06 0.01 266 / 70%);
+  --aa-sheen: oklch(0.92 0.06 80);
+  --aa-edge: oklch(0 0 0 / 55%);
+}
+
+.aa-plate {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 100% at 22% 12%, var(--aa-plate-a), transparent 62%),
+    linear-gradient(155deg, var(--aa-plate-b) 10%, var(--aa-plate-c) 100%);
+}
+
+/* тонкое зерно материала */
+.aa-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: repeating-linear-gradient(
+      92deg,
+      oklch(1 0 0 / 6%) 0 1px,
+      transparent 1px 3px
+    ),
+    repeating-linear-gradient(6deg, oklch(0 0 0 / 5%) 0 1px, transparent 1px 4px);
+}
+
+.aa-shadow-edge {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 18%),
+    inset 0 -18px 40px -24px var(--aa-edge),
+    inset 0 0 0 1px var(--aa-edge);
+}
+
+.aa-caption-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.aa-emblem--invalid {
+  border: 1px dashed oklch(0.6 0.02 60 / 60%);
+  background: oklch(0.2 0.01 260);
+}
+
+/* ---------- геометрия ---------- */
+
+.aa-geometry {
+  position: absolute;
+  inset: 6%;
+  width: 88%;
+  height: 88%;
+  overflow: visible;
+}
+
+.aa-relief {
+  /* фаска: свет сверху, тень снизу — рельеф, а не «неон» */
+  filter: drop-shadow(0 1px 0 oklch(0 0 0 / 32%)) drop-shadow(0 -1px 0 oklch(1 0 0 / 22%));
+}
+
+.aa-mass {
+  fill: var(--aa-mass);
+  stroke: none;
+}
+
+.aa-void {
+  fill: var(--aa-void);
+  stroke: none;
+}
+
+.aa-shade {
+  fill: var(--aa-shade);
+  stroke: none;
+}
+
+.aa-node {
+  fill: var(--aa-ink);
+  stroke: none;
+}
+
+.aa-line {
+  fill: none;
+  stroke: var(--aa-ink);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+}
+
+.aa-hair {
+  stroke-width: 0.8;
+  opacity: 0.6;
+}
+
+/* ---------- ПОЯВЛЕНИЕ (finite) ---------- */
+
+@keyframes aa-emerge {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes aa-engrave {
+  from {
+    stroke-dashoffset: 420;
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.9;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 0.9;
+  }
+}
+
+@keyframes aa-sheen-pass {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  88% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(320px);
+    opacity: 0;
+  }
+}
+
+.aa-emblem {
+  animation: aa-emerge 1200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.aa-emblem .aa-line {
+  stroke-dasharray: 420;
+  animation: aa-engrave 2600ms cubic-bezier(0.65, 0, 0.35, 1) 260ms both;
+}
+
+.aa-sheen-bar {
+  opacity: 0;
+  animation: aa-sheen-pass 2600ms cubic-bezier(0.4, 0, 0.2, 1) 900ms 1 both;
+}
+
+/* ---------- ПОДПИСИ ДВИЖЕНИЯ (по одной на объект) ---------- */
+
+/* 2 · ФАЗА — единственный тихий ambient: ход внутренней тени */
+@keyframes aa-phase-walk {
+  0%,
+  100% {
+    transform: translateX(0) scaleX(1);
+  }
+  50% {
+    transform: translateX(-14px) scaleX(0.6);
+  }
+}
+.aa-phase {
+  transform-origin: 100px 100px;
+  animation: aa-phase-walk 34s ease-in-out 3s infinite;
+}
+
+/* 3 · РАСКРЫТИЕ — дуги расходятся один раз */
+@keyframes aa-open {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
+.aa-arc-set {
+  transform-origin: 100px 100px;
+  animation: aa-open 3200ms cubic-bezier(0.22, 1, 0.36, 1) 600ms both;
+}
+
+/* 4 · СДВИГ — контролируемое смещение половин, один раз */
+@keyframes aa-shift-up {
+  0%,
+  40% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-5px, -2px);
+  }
+}
+@keyframes aa-shift-down {
+  0%,
+  40% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(5px, 2px);
+  }
+}
+.aa-shift-a {
+  animation: aa-shift-up 3400ms cubic-bezier(0.65, 0, 0.35, 1) 700ms both;
+}
+.aa-shift-b {
+  animation: aa-shift-down 3400ms cubic-bezier(0.65, 0, 0.35, 1) 700ms both;
+}
+.aa-broken {
+  stroke-dasharray: 44 18;
+}
+
+/* 5 · ТРАЕКТОРИЯ — линия находит путь */
+@keyframes aa-trace-run {
+  from {
+    stroke-dashoffset: 420;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.aa-trace {
+  stroke-dasharray: 420;
+  animation: aa-trace-run 4200ms cubic-bezier(0.65, 0, 0.35, 1) 400ms both;
+}
+
+/* 6 · СОГЛАСИЕ — очень тихое дыхание формы */
+@keyframes aa-breath {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.018);
+  }
+}
+.aa-petals {
+  transform-origin: 100px 100px;
+  animation: aa-breath 18s ease-in-out 2s infinite;
+}
+
+/* 7 · ОТСУТСТВИЕ — часть контура появляется и растворяется */
+@keyframes aa-fade-part {
+  0%,
+  100% {
+    opacity: 0.08;
+  }
+  45% {
+    opacity: 0.85;
+  }
+}
+.aa-dissolve {
+  animation: aa-fade-part 22s ease-in-out 2s infinite;
+}
+.aa-dissolve-2 {
+  animation: aa-fade-part 22s ease-in-out 8s infinite;
+}
+
+/* 9 · РАЗРЕЗ — одно короткое направленное проявление */
+@keyframes aa-cut-in {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 0.85;
+  }
+}
+.aa-cut {
+  transform-origin: 100px 30px;
+  animation: aa-cut-in 900ms cubic-bezier(0.16, 1, 0.3, 1) 1500ms both;
+}
+
+/* ---------- ОТВЕТ НА КАСАНИЕ / НАВЕДЕНИЕ ---------- */
+
+.aa-emblem:hover,
+.aa-emblem:focus-visible {
+  transform: translateY(-2px);
+}
+
+.aa-emblem:hover .aa-sheen-bar,
+.aa-emblem:focus-visible .aa-sheen-bar {
+  animation: aa-sheen-pass 1800ms cubic-bezier(0.4, 0, 0.2, 1) 1 both;
+}
+
+/* 8 · ОСЬ — объект неподвижен, отвечает только свет */
+.aa-emblem[data-n="8"] .aa-relief {
+  transition: filter 1200ms ease;
+}
+.aa-emblem[data-n="8"]:hover .aa-relief {
+  filter: drop-shadow(0 2px 1px oklch(0 0 0 / 45%)) drop-shadow(0 -1px 0 oklch(1 0 0 / 30%));
+}
+
+/* ---------- ПОКОЙ ---------- */
+
+.aa-emblem[data-ambient="off"] .aa-relief * {
+  animation-iteration-count: 1;
+}
+
+/* ---------- REDUCED MOTION ---------- */
+
+.aa-emblem[data-motion="reduced"],
+.aa-emblem[data-motion="reduced"] *,
+.aa-emblem[data-motion="still"],
+.aa-emblem[data-motion="still"] * {
+  animation: none !important;
+  transition: none !important;
+  stroke-dashoffset: 0 !important;
+}
+.aa-emblem[data-motion="reduced"] .aa-sheen-bar,
+.aa-emblem[data-motion="still"] .aa-sheen-bar {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aa-emblem,
+  .aa-emblem * {
+    animation: none !important;
+    transition: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+  .aa-sheen-bar {
+    opacity: 0;
+  }
+}

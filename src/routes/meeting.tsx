@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { Orb } from "@/components/mirror/Orb";
+import { ArchetypeEmblem } from "@/donor/archetype-art";
 import { Ring } from "@/components/mirror/Ring";
 import { useJourney } from "@/lib/journey";
 import { buildMyth } from "@/lib/myth";
@@ -89,7 +89,7 @@ function MeetingPage() {
 
       <div className="mt-16 flex flex-wrap items-center justify-center gap-x-2 gap-y-8">
         <div className="text-center">
-          <Orb archetype={chart.soul.archetype} size={150} />
+          <ArchetypeEmblem number={chart.soul.archetype.n} variant="obsidian" size={150} />
           <p className="mt-4 text-xs uppercase tracking-wider-xs text-gold/80">Код</p>
           <p className="mt-1 text-sm text-muted-foreground">{formatDate(date)}</p>
         </div>

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Orb } from "@/components/mirror/Orb";
+import { ArchetypeEmblem } from "@/donor/archetype-art";
 import { PracticeCard } from "@/components/mirror/PracticeCard";
 import { useJourney } from "@/lib/journey";
 import { buildChart, formatDate, meeting, tensionText, type Position } from "@/lib/numerology";
@@ -43,7 +43,7 @@ function Key({ p, index }: { p: Position; index: string }) {
   return (
     <>
     <div className="flex flex-col items-center gap-8 text-center md:flex-row md:items-start md:gap-12 md:text-left">
-      <Orb archetype={p.archetype} size={220} />
+      <ArchetypeEmblem number={p.archetype.n} variant="obsidian" size={220} />
       <div className="max-w-xl">
         <p className="text-xs uppercase tracking-wider-xs text-gold/80">{index} · {p.label}</p>
         <h2 className="mt-4 text-4xl leading-tight sm:text-5xl">
@@ -157,9 +157,9 @@ function CodePage() {
         <Reveal>
           <div className="mx-auto max-w-2xl">
             <div className="flex items-center justify-center gap-6">
-              <Orb archetype={soul.archetype} size={120} />
+              <ArchetypeEmblem number={soul.archetype.n} variant="obsidian" size={120} />
               <span className="text-3xl text-gold/60">·</span>
-              <Orb archetype={action.archetype} size={120} />
+              <ArchetypeEmblem number={action.archetype.n} variant="obsidian" size={120} />
             </div>
             <p className="mt-10 text-center text-xs uppercase tracking-wider-xs text-gold/80">
               Соединение
@@ -189,7 +189,7 @@ function CodePage() {
       {step >= 5 && (
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <Orb archetype={vector.archetype} size={200} />
+            <ArchetypeEmblem number={vector.archetype.n} variant="obsidian" size={200} />
             <p className="mt-10 text-xs uppercase tracking-wider-xs text-gold/80">
               Ваш вектор реализации
             </p>
@@ -240,7 +240,7 @@ function CodePage() {
                 key={p.key}
                 className="flex items-center gap-5 rounded-sm border border-border bg-card/40 p-5 backdrop-blur-sm"
               >
-                <Orb archetype={p.archetype} size={72} />
+                <ArchetypeEmblem number={p.archetype.n} variant="obsidian" size={72} />
                 <div>
                   <p className="text-xs uppercase tracking-wider-xs text-muted-foreground">
                     {p.label}

@@ -41,10 +41,10 @@ function Door({
   children: React.ReactNode;
 }) {
   return (
-    <article className="flex flex-col rounded-sm border border-border bg-card/40 p-7 backdrop-blur-sm transition-colors hover:border-gold/40">
+    <article className="flex flex-col border-t border-border pt-7 transition-colors hover:border-gold/50">
       <p className="text-xs uppercase tracking-wider-xs text-gold">{tag}</p>
       <h3 className="mt-4 text-3xl leading-tight">{title}</h3>
-      <p className="mt-4 flex-1 text-[15px] leading-relaxed text-foreground/80">{text}</p>
+      <p className="mt-4 flex-1 text-[15px] leading-relaxed text-foreground/75">{text}</p>
       {done && (
         <p className="mt-4 text-xs uppercase tracking-wider-xs text-gold/70">Уже открыто</p>
       )}
@@ -149,27 +149,27 @@ function Index() {
         </div>
       </section>
 
-      {/* Пантеон-тизер */}
-      <section className="mx-auto max-w-6xl px-6 pb-28">
-        <div className="mb-12 max-w-2xl">
-          <p className="text-xs uppercase tracking-wider-xs text-gold/80">Пантеон</p>
-          <h2 className="mt-6 text-4xl leading-tight sm:text-5xl">Девять архетипов</h2>
+      {/* Пантеон — коллекция объектов */}
+      <section className="mx-auto max-w-4xl px-6 pb-28">
+        <div className="mb-4 max-w-2xl">
+          <p className="text-xs uppercase tracking-wider-xs text-gold/80">Коллекция</p>
+          <h2 className="mt-6 text-4xl leading-tight sm:text-5xl">Девять сил как девять объектов</h2>
           <p className="mt-5 text-[17px] leading-relaxed text-foreground/80">
-            Сначала образ, потом смысл. Три силы — для знакомства, остальные шесть ждут
-            за одной кнопкой.
+            Идите вдоль коллекции. Сначала форма и материал, потом одна человеческая фраза —
+            и только если захочется, всё остальное.
           </p>
         </div>
-        <div className="grid gap-5 md:grid-cols-2">
+        <div>
           {(allArchetypes ? ARCHETYPE_LIST : teaser).map((a, i) => (
             <ArchetypeCard key={a.n} a={a} index={i} />
           ))}
         </div>
-        <div className="mt-10 text-center">
+        <div className="mt-12 border-t border-border/70 pt-10 text-center">
           <button
             onClick={() => setAllArchetypes((v) => !v)}
-            className="rounded-sm border border-gold/50 bg-gold/5 px-8 py-4 text-xs uppercase tracking-wider-xs text-gold transition-all hover:bg-gold/15"
+            className="min-h-11 rounded-sm border border-gold/50 bg-gold/5 px-8 py-4 text-xs uppercase tracking-wider-xs text-gold transition-all hover:bg-gold/15"
           >
-            {allArchetypes ? "Свернуть пантеон" : "Посмотреть все 9 архетипов"}
+            {allArchetypes ? "Свернуть коллекцию" : "Пройти всю коллекцию — девять объектов"}
           </button>
         </div>
       </section>

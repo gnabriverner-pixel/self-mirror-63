@@ -90,20 +90,20 @@ function shape(n: ArchetypeNumber) {
         </g>
       );
 
-    // 4 — СДВИГ: расколотая плита, части не совпадают
+    // 4 — СДВИГ: затмение, две части не совпадают
     case 4:
       return (
         <g className="aa-sig aa-sig-4">
           <g className="aa-shift-a">
-            <path className="aa-mass" d="M42 96h116v-8a58 58 0 0 0-116 0z" />
-            <path className="aa-line" d="M42 96h116" />
+            <path className="aa-mass" d="M100 44a56 56 0 0 1 0 112z" />
+            <path className="aa-line" d="M100 44a56 56 0 0 1 0 112z" />
           </g>
           <g className="aa-shift-b">
-            <path className="aa-mass" d="M42 104h116v8a58 58 0 0 1-116 0z" />
-            <path className="aa-line" d="M42 104h116" />
+            <path className="aa-mass" d="M100 44a56 56 0 0 0 0 112z" />
+            <path className="aa-line" d="M100 44a56 56 0 0 0 0 112z" />
           </g>
-          <circle className="aa-line aa-hair aa-broken" cx="100" cy="100" r="76" />
-          <path className="aa-line aa-hair" d="M56 138c12-12 20 12 32 0s20 12 32 0 20 12 26 2" />
+          <circle className="aa-void aa-shift-b" cx="118" cy="88" r="34" />
+          <circle className="aa-line aa-hair aa-broken" cx="100" cy="100" r="78" />
         </g>
       );
 

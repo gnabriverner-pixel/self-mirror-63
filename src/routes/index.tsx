@@ -41,10 +41,10 @@ function Door({
   children: React.ReactNode;
 }) {
   return (
-    <article className="flex flex-col rounded-sm border border-border bg-card/40 p-7 backdrop-blur-sm transition-colors hover:border-gold/40">
+    <article className="flex flex-col border-t border-border pt-7 transition-colors hover:border-gold/50">
       <p className="text-xs uppercase tracking-wider-xs text-gold">{tag}</p>
       <h3 className="mt-4 text-3xl leading-tight">{title}</h3>
-      <p className="mt-4 flex-1 text-[15px] leading-relaxed text-foreground/80">{text}</p>
+      <p className="mt-4 flex-1 text-[15px] leading-relaxed text-foreground/75">{text}</p>
       {done && (
         <p className="mt-4 text-xs uppercase tracking-wider-xs text-gold/70">Уже открыто</p>
       )}

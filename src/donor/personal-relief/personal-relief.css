@@ -1,0 +1,399 @@
+/*
+ * DONOR MODULE — personal-relief
+ * Один рельеф из пяти пластических систем: плита, боковой свет, разлом, ось выхода.
+ * Материальные переменные совпадают с archetype-art (--aa-*), чтобы геометрия
+ * наследовала тот же алебастр/обсидиан. Никаких градиентных «свечений».
+ */
+
+.pr-relief {
+  margin: 0;
+  display: block;
+  width: 100%;
+}
+
+.pr-field {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 2px;
+  isolation: isolate;
+  contain: paint;
+}
+
+.pr-relief[data-material="alabaster"] .pr-field {
+  --aa-plate-a: oklch(0.93 0.012 85);
+  --aa-plate-b: oklch(0.82 0.018 76);
+  --aa-plate-c: oklch(0.69 0.022 70);
+  --aa-ink: oklch(0.34 0.026 62);
+  --aa-mass: oklch(0.89 0.014 82);
+  --aa-void: oklch(0.62 0.024 68);
+  --aa-shade: oklch(0.55 0.03 66 / 55%);
+  --aa-sheen: oklch(1 0 0);
+  --aa-edge: oklch(0.3 0.03 60 / 30%);
+}
+
+.pr-relief[data-material="obsidian"] .pr-field {
+  --aa-plate-a: oklch(0.23 0.018 262);
+  --aa-plate-b: oklch(0.16 0.02 264);
+  --aa-plate-c: oklch(0.11 0.016 266);
+  --aa-ink: oklch(0.82 0.055 78);
+  --aa-mass: oklch(0.27 0.022 264);
+  --aa-void: oklch(0.1 0.014 266);
+  --aa-shade: oklch(0.06 0.01 266 / 70%);
+  --aa-sheen: oklch(0.92 0.06 80);
+  --aa-edge: oklch(0 0 0 / 55%);
+}
+
+.pr-plate {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(130% 110% at 20% 8%, var(--aa-plate-a), transparent 58%),
+    linear-gradient(var(--pr-light, 24deg), var(--aa-plate-b) 8%, var(--aa-plate-c) 100%);
+}
+
+.pr-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  background-image:
+    repeating-linear-gradient(92deg, oklch(1 0 0 / 6%) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(6deg, oklch(0 0 0 / 5%) 0 1px, transparent 1px 4px);
+}
+
+.pr-edge {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 16%),
+    inset 0 -28px 60px -34px var(--aa-edge),
+    inset 0 0 0 1px var(--aa-edge);
+}
+
+/* ---------- структура: разлом и ось выхода ---------- */
+
+.pr-structure {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.pr-axis,
+.pr-fracture {
+  stroke: var(--aa-ink);
+  fill: none;
+  vector-effect: non-scaling-stroke;
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+.pr-axis {
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.pr-fracture {
+  stroke-width: 1.4;
+  opacity: 0;
+}
+
+/* ---------- объекты ---------- */
+
+.pr-object {
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  opacity: 0;
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 500ms ease;
+  will-change: opacity;
+}
+
+.pr-object-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.pr-object[data-slot="realization"] .pr-object-inner {
+  opacity: 0.42;
+}
+
+.pr-object[data-slot="tension"] .pr-object-inner {
+  filter: drop-shadow(0 6px 10px oklch(0 0 0 / 35%));
+}
+
+.pr-object .aa-geometry {
+  position: absolute;
+  inset: 4%;
+  width: 92%;
+  height: 92%;
+  overflow: visible;
+}
+
+.pr-object .aa-line {
+  fill: none;
+  stroke: var(--aa-ink);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+}
+
+.pr-object .aa-hair {
+  stroke-width: 0.8;
+  opacity: 0.55;
+}
+
+/* ---------- ступени раскрытия ---------- */
+
+.pr-relief:is([data-stage="1"], [data-stage="2"], [data-stage="3"], [data-stage="4"], [data-stage="5"], [data-stage="6"])
+  .pr-object[data-step="1"],
+.pr-relief:is([data-stage="2"], [data-stage="3"], [data-stage="4"], [data-stage="5"], [data-stage="6"])
+  .pr-object[data-step="2"],
+.pr-relief:is([data-stage="3"], [data-stage="4"], [data-stage="5"], [data-stage="6"])
+  .pr-object[data-step="3"],
+.pr-relief:is([data-stage="4"], [data-stage="5"], [data-stage="6"]) .pr-object[data-step="4"] {
+  opacity: 1;
+}
+
+.pr-relief:is([data-stage="3"], [data-stage="4"], [data-stage="5"], [data-stage="6"]) .pr-fracture {
+  opacity: 0.5;
+}
+
+.pr-relief:is([data-stage="4"], [data-stage="5"], [data-stage="6"]) .pr-axis {
+  opacity: 0.45;
+}
+
+/* боковой свет: один конечный проход, без бесконечных циклов */
+.pr-light {
+  position: absolute;
+  inset: -20% -60%;
+  z-index: 7;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 42%,
+    var(--aa-sheen) 50%,
+    transparent 58%
+  );
+  mix-blend-mode: soft-light;
+  transform: translateX(-40%);
+}
+
+.pr-relief[data-stage="2"] .pr-light {
+  animation: pr-light-pass 1500ms cubic-bezier(0.4, 0, 0.2, 1) 1 both;
+}
+
+@keyframes pr-light-pass {
+  0% {
+    opacity: 0;
+    transform: translateX(-45%);
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(45%);
+  }
+}
+
+/* ---------- provenance: подсветка позиции ---------- */
+
+.pr-relief[data-focused="yes"] .pr-object[data-active="no"] {
+  opacity: 0.22;
+}
+
+.pr-relief[data-focused="yes"] .pr-object[data-active="yes"] .pr-object-inner {
+  opacity: 1;
+  filter: drop-shadow(0 0 0 transparent);
+}
+
+.pr-relief[data-focused="yes"] .pr-object[data-active="yes"]::after {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  border: 1px solid var(--aa-ink);
+  border-radius: 999px;
+  opacity: 0.75;
+}
+
+/* ---------- подпись ---------- */
+
+.pr-statement {
+  max-width: 34rem;
+  margin: 1.75rem auto 0;
+  text-align: center;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pr-statement[data-shown="yes"] {
+  opacity: 1;
+  transform: none;
+}
+
+.pr-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- reduced motion ---------- */
+
+.pr-relief[data-motion="reduced"] .pr-object,
+.pr-relief[data-motion="still"] .pr-object {
+  transition-duration: 1ms;
+}
+
+.pr-relief[data-motion="reduced"] .pr-light,
+.pr-relief[data-motion="still"] .pr-light {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-object,
+  .pr-axis,
+  .pr-fracture,
+  .pr-statement {
+    transition-duration: 1ms !important;
+  }
+  .pr-light {
+    animation: none !important;
+  }
+}
+
+/* ---------- мобильная композиция ---------- */
+
+@media (max-width: 640px) {
+  .pr-field {
+    max-width: min(100%, 22.5rem);
+  }
+  .pr-statement {
+    font-size: 1rem;
+    margin-top: 1.25rem;
+  }
+}
+
+/* ---------- provenance ---------- */
+
+.pr-prov {
+  width: 100%;
+}
+
+.pr-prov-toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 0;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: inherit;
+  opacity: 0.8;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  cursor: pointer;
+}
+
+.pr-prov-toggle:hover {
+  opacity: 1;
+}
+
+.pr-prov-toggle:focus-visible,
+.pr-prov-item:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.pr-prov-panel {
+  margin-top: 1.25rem;
+}
+
+.pr-prov-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pr-prov-item {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 1rem 0;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-top: 1px solid currentColor;
+  border-color: color-mix(in oklab, currentColor 22%, transparent);
+  color: inherit;
+  cursor: pointer;
+}
+
+.pr-prov-label {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.pr-prov-arch {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.125rem;
+}
+
+.pr-prov-role,
+.pr-prov-note {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.pr-prov-state {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.pr-prov-item[aria-pressed="true"] .pr-prov-state {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.pr-prov-disclaimer {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  opacity: 0.6;
+}

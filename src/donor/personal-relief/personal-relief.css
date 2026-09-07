@@ -296,3 +296,104 @@
     margin-top: 1.25rem;
   }
 }
+
+/* ---------- provenance ---------- */
+
+.pr-prov {
+  width: 100%;
+}
+
+.pr-prov-toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 0;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: inherit;
+  opacity: 0.8;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  cursor: pointer;
+}
+
+.pr-prov-toggle:hover {
+  opacity: 1;
+}
+
+.pr-prov-toggle:focus-visible,
+.pr-prov-item:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.pr-prov-panel {
+  margin-top: 1.25rem;
+}
+
+.pr-prov-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pr-prov-item {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 1rem 0;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-top: 1px solid currentColor;
+  border-color: color-mix(in oklab, currentColor 22%, transparent);
+  color: inherit;
+  cursor: pointer;
+}
+
+.pr-prov-label {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.pr-prov-arch {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.125rem;
+}
+
+.pr-prov-role,
+.pr-prov-note {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.pr-prov-state {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.pr-prov-item[aria-pressed="true"] .pr-prov-state {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.pr-prov-disclaimer {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  opacity: 0.6;
+}

@@ -11,32 +11,28 @@
 
 # AGENTS.md — Web Surface Contract
 
-This repository is the Web surface of the larger «Зеркало себя / Digital Code» product. Do not treat it as an independent product with its own strategy.
+This repository is the Web surface of the larger «Зеркало себя / Digital Code» product. It does not own a separate product strategy.
 
-## Cross-project orientation
+Use the smallest context set that can change the task.
 
-Before substantive product, architecture, provider, Telegram, PDF or monetization work, read the canonical control plane in:
+## Context routing
 
-`gnabriverner-pixel/digital-code-system`
+- Small local UI/code/test fix → inspect the affected files and local tests first.
+- Current release/deploy/routing/gate → consult canonical `gnabriverner-pixel/digital-code-system/STATUS.md`.
+- Product direction, monetization, PDF, Telegram or cross-surface experience → consult canonical DCS `AGENTS.md` plus the product strategy / relevant decision record.
+- Calculation, truth/provenance or generation behavior → consult the directly relevant DCS contract, not the whole repository.
 
-Required files there:
-
-1. `AGENTS.md` — cross-model operating contract.
-2. `STATUS.md` — current mutable release/project state.
-3. `docs/PRODUCT_STRATEGY_AND_COMMERCIAL_ARCHITECTURE_2026-09-13.md` — durable product/commercial architecture.
-4. `docs/DECISION_LOG.md` — major decisions that must not be rediscovered from chat history.
-
-If those files are unavailable, do not infer current project state from this repo's old README/history. Report that cross-project context is missing.
+If canonical DCS context is unavailable for a task that truly depends on it, report that gap. Do not infer current strategy from old Web history.
 
 ## Web role
 
-The Web App is the primary first product experience:
+The Web App is the primary first experience:
 
 `Digital Code ∥ Personal Myth → Meeting of Mirrors → Albert → My Mirror / Telegram continuation`
 
-Telegram is continuity/retention/delivery, not a competing second product.
-Telegram Mini App is deferred until real usage proves it necessary.
-PDF is not the current free product; it is planned as the first premium paid personalized artifact after public release.
+Telegram = continuity/retention/delivery, not a competing second product.
+Telegram Mini App remains deferred until real usage proves it necessary.
+The first paid direction is a premium personalized experience/artifact, not a longer generic numerology report.
 
 ## Product invariants
 
@@ -44,23 +40,22 @@ Preserve:
 
 - deterministic calculation != interpretation;
 - interpretation != user-confirmed fact;
-- explicit corrections/rejections supersede relevant earlier model hypotheses;
+- explicit corrections/rejections supersede relevant earlier hypotheses;
 - `Myth metaphor != biography`;
 - no forced Meeting resonance padding;
-- Meeting may honestly return no strong parallel;
-- Albert must change direction after a meaningful correction;
-- method/tradition provenance must not be presented as proof of truth;
+- Albert changes direction after a meaningful correction;
+- method/tradition provenance is not proof of truth;
 - semantic boldness + epistemic humility.
 
 ## Execution discipline
 
-- One writable executor per bounded gate.
-- Verify exact base SHA before changing files.
-- Do not repeat work already proven in another executor/runtime without first reconciling state.
-- Use browser/runtime evidence for UI/deploy claims.
-- Do not silently change provider/model/routing contracts.
-- Do not expose secrets or PII.
-- Do not reintroduce warm-user cohorts or another broad pre-release polish cycle unless explicitly authorized.
+- one writable executor per bounded gate;
+- smallest coherent change;
+- verify enough to prove the acceptance criteria; do not run every test by habit;
+- browser/runtime evidence for UI/deployment claims;
+- no silent provider/model/routing changes;
+- never expose secrets or PII;
+- no broad audit when one executable task exists.
 
 ## Lovable safety
 
@@ -68,13 +63,12 @@ The Lovable block above is binding:
 
 - no force-push;
 - no rewriting pushed history;
-- keep connected branches in a working state;
+- keep connected branches working;
 - prefer additive commits and normal merges.
 
-## Control-plane updates
+## Control plane
 
-This repository should not maintain a second full mutable project status.
+Do not maintain a second mutable Web-only project status.
+If Web work materially changes current release state, product architecture, routing, privacy behavior or the active gate, update canonical DCS `STATUS.md` in the corresponding control-plane change or explicitly report that it is pending.
 
-If Web work changes release state or product behavior materially, the executor must update the canonical `digital-code-system/STATUS.md` in the corresponding control-plane change or explicitly report that the canonical status is pending/stale.
-
-Model-specific files (`CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`) are adapters only and must not create an independent Web-only strategy.
+Model-specific adapters must remain thin and must not duplicate mutable project state.

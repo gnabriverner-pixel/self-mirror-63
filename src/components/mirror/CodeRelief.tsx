@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { PersonalRelief, ReliefProvenance, type ReliefPosition, type ReliefSlot } from "@/donor/personal-relief";
+import {
+  PersonalRelief,
+  ReliefProvenance,
+  type ReliefPosition,
+  type ReliefSlot,
+} from "@/donor/personal-relief";
 import { isArchetypeNumber, type ArchetypeNumber } from "@/donor/archetype-art";
 import type { Chart } from "@/lib/numerology";
 
@@ -16,11 +21,41 @@ export function CodeRelief({ chart }: { chart: Chart }) {
   const [run, setRun] = useState(0);
 
   const positions: ReliefPosition[] = [
-    { slot: "soul", archetype: n(chart.soul.value), weight: 0.72, label: chart.soul.label, caption: chart.soul.archetype.title },
-    { slot: "action", archetype: n(chart.action.value), weight: 0.55, label: chart.action.label, caption: chart.action.archetype.title },
-    { slot: "realization", archetype: n(chart.realization.value), weight: 0.6, label: chart.realization.label, caption: chart.realization.archetype.title },
-    { slot: "tension", archetype: n(chart.tension.value), weight: 0.45, label: chart.tension.label, caption: chart.tension.archetype.title },
-    { slot: "vector", archetype: n(chart.vector.value), weight: 0.5, label: chart.vector.label, caption: chart.vector.archetype.title },
+    {
+      slot: "soul",
+      archetype: n(chart.soul.value),
+      weight: 0.72,
+      label: chart.soul.label,
+      caption: chart.soul.archetype.title,
+    },
+    {
+      slot: "action",
+      archetype: n(chart.action.value),
+      weight: 0.55,
+      label: chart.action.label,
+      caption: chart.action.archetype.title,
+    },
+    {
+      slot: "realization",
+      archetype: n(chart.realization.value),
+      weight: 0.6,
+      label: chart.realization.label,
+      caption: chart.realization.archetype.title,
+    },
+    {
+      slot: "tension",
+      archetype: n(chart.tension.value),
+      weight: 0.45,
+      label: chart.tension.label,
+      caption: chart.tension.archetype.title,
+    },
+    {
+      slot: "vector",
+      archetype: n(chart.vector.value),
+      weight: 0.5,
+      label: chart.vector.label,
+      caption: chart.vector.archetype.title,
+    },
   ];
 
   const statement = `Заметнее всего здесь спор между ${chart.soul.archetype.title.toLowerCase()} и ${chart.tension.archetype.title.toLowerCase()}.`;

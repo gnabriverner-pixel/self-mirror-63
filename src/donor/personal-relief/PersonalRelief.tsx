@@ -52,8 +52,7 @@ export function PersonalRelief({
   const anyFocus = focus !== null || focusPair !== null;
 
   const label =
-    summary ??
-    "Персональный рельеф: один объект, собранный из пяти архетипических форм.";
+    summary ?? "Персональный рельеф: один объект, собранный из пяти архетипических форм.";
 
   return (
     <figure
@@ -129,8 +128,8 @@ export function PersonalRelief({
           const token = ARCHETYPE_ART[p.archetype];
           return (
             <li key={p.slot}>
-              {src?.label ?? p.slot}: объект {p.archetype} · {token.sanskrit} · {token.object}.{" "}
-              Роль в композиции — {p.role}.
+              {src?.label ?? p.slot}: объект {p.archetype} · {token.sanskrit} · {token.object}. Роль
+              в композиции — {p.role}.
             </li>
           );
         })}

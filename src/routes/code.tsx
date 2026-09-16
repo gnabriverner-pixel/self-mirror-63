@@ -43,21 +43,23 @@ function Reveal({ children }: { children: React.ReactNode }) {
 function Key({ p, index }: { p: Position; index: string }) {
   return (
     <>
-    <div className="flex flex-col items-center gap-8 text-center md:flex-row md:items-start md:gap-12 md:text-left">
-      <ArchetypeEmblem number={p.archetype.n} variant="obsidian" size={220} />
-      <div className="max-w-xl">
-        <p className="text-xs uppercase tracking-wider-xs text-gold/80">{index} · {p.label}</p>
-        <h2 className="mt-4 text-4xl leading-tight sm:text-5xl">
-          {p.archetype.title}
-        </h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {p.value} · {p.archetype.sanskrit} · {p.archetype.planet} — {p.archetype.essence}
-        </p>
-        <p className="mt-7 text-[17px] leading-relaxed text-foreground/85">{p.archetype.core}</p>
-        <p className="mt-5 text-[15px] leading-relaxed text-foreground/70">{p.archetype.action}</p>
+      <div className="flex flex-col items-center gap-8 text-center md:flex-row md:items-start md:gap-12 md:text-left">
+        <ArchetypeEmblem number={p.archetype.n} variant="obsidian" size={220} />
+        <div className="max-w-xl">
+          <p className="text-xs uppercase tracking-wider-xs text-gold/80">
+            {index} · {p.label}
+          </p>
+          <h2 className="mt-4 text-4xl leading-tight sm:text-5xl">{p.archetype.title}</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {p.value} · {p.archetype.sanskrit} · {p.archetype.planet} — {p.archetype.essence}
+          </p>
+          <p className="mt-7 text-[17px] leading-relaxed text-foreground/85">{p.archetype.core}</p>
+          <p className="mt-5 text-[15px] leading-relaxed text-foreground/70">
+            {p.archetype.action}
+          </p>
+        </div>
       </div>
-    </div>
-    <PracticeCard a={p.archetype} />
+      <PracticeCard a={p.archetype} />
     </>
   );
 }
@@ -90,7 +92,10 @@ function CodePage() {
       <div className="grid min-h-screen place-items-center px-6 text-center">
         <div>
           <h1 className="text-3xl">Дата не найдена</h1>
-          <Link to="/" className="mt-6 inline-block text-sm text-gold underline-offset-4 hover:underline">
+          <Link
+            to="/"
+            className="mt-6 inline-block text-sm text-gold underline-offset-4 hover:underline"
+          >
             Вернуться ко входу
           </Link>
         </div>
@@ -135,7 +140,10 @@ function CodePage() {
           <p className="text-xs uppercase tracking-wider-xs text-gold/80">
             {Math.max(opened, 1)} / 5 · Ваша карта раскрывается
           </p>
-          <Link to="/" className="text-xs uppercase tracking-wider-xs text-muted-foreground hover:text-gold">
+          <Link
+            to="/"
+            className="text-xs uppercase tracking-wider-xs text-muted-foreground hover:text-gold"
+          >
             Выйти
           </Link>
         </div>
@@ -146,8 +154,8 @@ function CodePage() {
           Из этой даты складывается формула
         </h1>
         <p className="mt-7 max-w-lg text-[17px] leading-relaxed text-foreground/80">
-          Она уже посчитана. Мы откроем её не всю сразу — по одному ключу, чтобы каждый
-          успел с вами встретиться.
+          Она уже посчитана. Мы откроем её не всю сразу — по одному ключу, чтобы каждый успел с вами
+          встретиться.
         </p>
         {step === 0 && <NextButton label="Первый ключ" />}
       </header>
@@ -192,8 +200,8 @@ function CodePage() {
         <Reveal>
           <Key p={realization} index="Третий ключ" />
           <p className="mx-auto mt-8 max-w-xl text-center text-[15px] leading-relaxed text-foreground/70">
-            Эта сила ищет выход {realization.archetype.outlet}. Там вы устаёте меньше, чем
-            должны были бы, — и это самый честный признак своего места.
+            Эта сила ищет выход {realization.archetype.outlet}. Там вы устаёте меньше, чем должны
+            были бы, — и это самый честный признак своего места.
           </p>
           {step === 4 && <NextButton label="Ваш вектор" />}
         </Reveal>
@@ -211,9 +219,9 @@ function CodePage() {
             </h2>
             <p className="mt-8 text-left text-[17px] leading-relaxed text-foreground/85">
               Ваша жизнь разворачивается естественнее всего туда, где нужно{" "}
-              {vector.archetype.demand.replace(/^/, "")} — и где это требуется не иногда, а
-              как основа дела. Вы приносите туда {vector.archetype.gift}. Всё, что построено
-              мимо этого, работает, но забирает у вас больше, чем возвращает.
+              {vector.archetype.demand.replace(/^/, "")} — и где это требуется не иногда, а как
+              основа дела. Вы приносите туда {vector.archetype.gift}. Всё, что построено мимо этого,
+              работает, но забирает у вас больше, чем возвращает.
             </p>
           </div>
           {step === 5 && <NextButton label="Место напряжения" />}
@@ -278,14 +286,14 @@ function CodePage() {
             <p className="text-xs uppercase tracking-wider-xs text-gold/80">Составные числа</p>
             <p className="mt-5 text-[17px] leading-relaxed text-foreground/85">
               За вашей {compound.value}-кой стоит {compound.path[0]}
-              {compound.path.length > 2 ? ` → ${compound.path[1]}` : ""}. В этой системе важно
-              не только итоговое число, но и путь, которым оно сложилось: две одинаковые{" "}
+              {compound.path.length > 2 ? ` → ${compound.path[1]}` : ""}. В этой системе важно не
+              только итоговое число, но и путь, которым оно сложилось: две одинаковые{" "}
               {compound.value}-ки могут звучать совершенно по-разному.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
               Ваша {compound.value} пришла через {compound.path[0]} — это значит, что к{" "}
-              {compound.archetype.essence.toLowerCase()} вы приходите не напрямую, а через
-              опыт, который сначала кажется совсем другим. Это отдельный слой карты.
+              {compound.archetype.essence.toLowerCase()} вы приходите не напрямую, а через опыт,
+              который сначала кажется совсем другим. Это отдельный слой карты.
             </p>
           </div>
           {step === 8 && <NextButton label="Проверить на своей жизни" />}
@@ -300,8 +308,8 @@ function CodePage() {
               Теперь можно поговорить о том, что вы увидели
             </h2>
             <p className="mt-8 text-center text-[17px] leading-relaxed text-foreground/85">
-              Альберт знает вашу карту целиком и помогает приложить её к реальной ситуации —
-              к работе, отношениям, выбору направления.
+              Альберт знает вашу карту целиком и помогает приложить её к реальной ситуации — к
+              работе, отношениям, выбору направления.
             </p>
             <div className="mt-10 space-y-3">
               {[
@@ -322,9 +330,9 @@ function CodePage() {
             <div className="mt-16 rounded-sm border border-gold/40 bg-gold/5 p-9 text-center">
               <h3 className="text-3xl leading-tight">Полное зеркало</h3>
               <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-foreground/80">
-                Все позиции формулы, происхождение каждого числа, связи между ними, ресурсы и
-                тень, матрица, ваш индивидуальный миф и персональный символический портрет —
-                плюс разговор с Альбертом внутри уже открытой карты.
+                Все позиции формулы, происхождение каждого числа, связи между ними, ресурсы и тень,
+                матрица, ваш индивидуальный миф и персональный символический портрет — плюс разговор
+                с Альбертом внутри уже открытой карты.
               </p>
               <button className="mt-9 rounded-sm border border-gold/60 bg-gold/15 px-10 py-4 text-xs uppercase tracking-wider-xs text-gold transition-all hover:bg-gold/25 hover:shadow-[var(--shadow-halo)]">
                 Открыть глубину · 650 ₽
@@ -335,11 +343,14 @@ function CodePage() {
             </div>
 
             <p className="mt-16 text-center text-xs leading-relaxed text-muted-foreground/80">
-              Всё это — интерпретация символической системы, а не утверждение о фактах.
-              Верным считается только то, что вы узнаёте в собственной жизни.
+              Всё это — интерпретация символической системы, а не утверждение о фактах. Верным
+              считается только то, что вы узнаёте в собственной жизни.
             </p>
             <div className="mt-8 text-center">
-              <Link to="/" className="text-xs uppercase tracking-wider-xs text-gold/80 hover:text-gold">
+              <Link
+                to="/"
+                className="text-xs uppercase tracking-wider-xs text-gold/80 hover:text-gold"
+              >
                 Вернуться в начало
               </Link>
             </div>

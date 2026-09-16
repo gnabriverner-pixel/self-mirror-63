@@ -52,12 +52,13 @@ function DonorPersonalRelief() {
 
   return (
     <main className="mx-auto min-h-[100dvh] w-full max-w-5xl overflow-x-hidden px-5 pb-24 pt-12 sm:px-8">
-      <p className="text-xs uppercase tracking-wider-xs text-gold/80">Donor Lab · signature moment</p>
+      <p className="text-xs uppercase tracking-wider-xs text-gold/80">
+        Donor Lab · signature moment
+      </p>
       <h1 className="mt-5 text-4xl leading-tight sm:text-6xl">Персональный рельеф</h1>
       <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-foreground/75">
-        Пять сил не стоят рядом. Они собраны в один предмет: центр массы, направление,
-        внешняя оболочка, разрыв и сторона выхода. Одни и те же числа всегда дают
-        одну и ту же композицию.
+        Пять сил не стоят рядом. Они собраны в один предмет: центр массы, направление, внешняя
+        оболочка, разрыв и сторона выхода. Одни и те же числа всегда дают одну и ту же композицию.
       </p>
 
       <div className="mt-8 flex flex-wrap gap-2">
@@ -143,7 +144,9 @@ function DonorPersonalRelief() {
                   reveal="instant"
                 />
                 <figcaption className="mt-4 min-h-11">
-                  <span className="text-xs uppercase tracking-wider-xs text-gold/70">{d.title}</span>
+                  <span className="text-xs uppercase tracking-wider-xs text-gold/70">
+                    {d.title}
+                  </span>
                   <span className="mt-1 block text-sm text-muted-foreground">
                     {d.numbers.join(" · ")} — {d.note}
                   </span>

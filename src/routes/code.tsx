@@ -89,7 +89,7 @@ function CodePage() {
   const chart = buildChart(date);
   const { soul, action, realization, vector, tension } = chart;
 
-  const steps = 8;
+  const steps = 9;
   const next = () => setStep((s) => Math.min(s + 1, steps));
   const KEY_STEPS = [1, 2, 4, 5, 6];
   const opened = KEY_STEPS.filter((s) => step >= s).length;
@@ -102,9 +102,9 @@ function CodePage() {
       >
         {label}
       </button>
-      {step < 7 && (
+      {step < 8 && (
         <button
-          onClick={() => setStep(7)}
+          onClick={() => setStep(8)}
           className="text-xs uppercase tracking-wider-xs text-muted-foreground transition-colors hover:text-gold"
         >
           Показать карту целиком
@@ -224,11 +224,18 @@ function CodePage() {
               {tension.archetype.shadow.join(", ")}.
             </p>
           </div>
-          {step === 6 && <NextButton label="Показать карту целиком" />}
+          {step === 6 && <NextButton label="Собрать всё в один предмет" />}
         </Reveal>
       )}
 
       {step >= 7 && (
+        <Reveal>
+          <CodeRelief chart={chart} />
+          {step === 7 && <NextButton label="Разобрать пять позиций" />}
+        </Reveal>
+      )}
+
+      {step >= 8 && (
         <Reveal>
           <div className="text-center">
             <p className="text-xs uppercase tracking-wider-xs text-gold/80">Ваша карта</p>

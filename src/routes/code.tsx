@@ -65,11 +65,23 @@ function Key({ p, index }: { p: Position; index: string }) {
 function CodePage() {
   const { d } = Route.useSearch();
   const [step, setStep] = useState(0);
-  const { journey, update } = useJourney();
+  const [restored, setRestored] = useState(false);
+  const { journey, update, ready } = useJourney();
+
+  // восстановление прерванного прохода по той же дате
+  useEffect(() => {
+    if (!ready || restored) return;
+    setRestored(true);
+    if (journey.birthDate === d && (journey.codeStep ?? 0) > 0) {
+      setStep(journey.codeStep ?? 0);
+    }
+  }, [ready, restored, journey.birthDate, journey.codeStep, d]);
 
   useEffect(() => {
-    if (step >= 7 && d) update({ codeDone: true, birthDate: d });
-  }, [step, d, update]);
+    if (!ready || !restored || !d) return;
+    update({ birthDate: d, codeStep: step, codeDone: step >= 7 ? true : journey.codeDone });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step, d, ready, restored]);
 
   const parts = d.split("-").map(Number);
   const valid = parts.length === 3 && parts.every((x) => !Number.isNaN(x));

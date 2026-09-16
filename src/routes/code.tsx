@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ArchetypeEmblem } from "@/donor/archetype-art";
 import { PracticeCard } from "@/components/mirror/PracticeCard";
+import { CodeRelief } from "@/components/mirror/CodeRelief";
 import { useJourney } from "@/lib/journey";
 import { buildChart, formatDate, meeting, tensionText, type Position } from "@/lib/numerology";
 
@@ -275,11 +276,11 @@ function CodePage() {
               опыт, который сначала кажется совсем другим. Это отдельный слой карты.
             </p>
           </div>
-          {step === 7 && <NextButton label="Проверить на своей жизни" />}
+          {step === 8 && <NextButton label="Проверить на своей жизни" />}
         </Reveal>
       )}
 
-      {step >= 8 && (
+      {step >= 9 && (
         <Reveal>
           <div className="mx-auto max-w-2xl">
             <p className="text-center text-xs uppercase tracking-wider-xs text-gold/80">Альберт</p>

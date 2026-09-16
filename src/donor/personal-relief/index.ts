@@ -4,6 +4,7 @@
  * Зависимости: React + ../archetype-art. Никакой продуктовой логики.
  */
 export { PersonalRelief } from "./PersonalRelief";
+export { ReliefProvenance } from "./ReliefProvenance";
 export { composeRelief, REVEAL_ORDER } from "./personalReliefComposition";
 export {
   RELIEF_SLOTS,
@@ -14,4 +15,5 @@ export {
   type ReliefPosition,
   type ReliefSlot,
 } from "./personalReliefTypes";
-export { DEMO_RELIEFS, type DemoRelief } from "./demoReliefs";
+export { DEMO_RELIEFS, demoPositions, type DemoRelief } from "./demoReliefs";
+export type { MotionMode as MotionModeAlias } from "../archetype-art";

@@ -67,7 +67,9 @@ export function ReliefProvenance({
                       </span>
                       <span className="pr-prov-role">{p.role}</span>
                       {src?.caption && <span className="pr-prov-note">{src.caption}</span>}
-                      <span className="pr-prov-state">{on ? "показано на объекте" : "показать на объекте"}</span>
+                      <span className="pr-prov-state">
+                        {on ? "показано на объекте" : "показать на объекте"}
+                      </span>
                     </button>
                   </li>
                 );

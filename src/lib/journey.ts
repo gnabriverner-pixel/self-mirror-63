@@ -14,6 +14,10 @@ export type Journey = {
   mythAnswers?: MythAnswers;
   mythTitle?: string;
   birthDate?: string;
+  /** шаг прохождения цифрового кода — чтобы вернуться туда же */
+  codeStep?: number;
+  /** практика дня отмечена выполненной (ISO-дата) */
+  practiceDoneAt?: string;
 };
 
 export const EMPTY_JOURNEY: Journey = {

@@ -4,7 +4,12 @@
  * Один и тот же набор чисел всегда даёт одну и ту же композицию. Никакого random().
  */
 import type { ArchetypeNumber } from "../archetype-art";
-import type { ReliefLayout, ReliefPlacement, ReliefPosition, ReliefSlot } from "./personalReliefTypes";
+import type {
+  ReliefLayout,
+  ReliefPlacement,
+  ReliefPosition,
+  ReliefSlot,
+} from "./personalReliefTypes";
 
 const rad = (deg: number) => (deg * Math.PI) / 180;
 const r2 = (v: number) => Math.round(v * 100) / 100;

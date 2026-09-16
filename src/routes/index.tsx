@@ -45,9 +45,7 @@ function Door({
       <p className="text-xs uppercase tracking-wider-xs text-gold">{tag}</p>
       <h3 className="mt-4 text-3xl leading-tight">{title}</h3>
       <p className="mt-4 flex-1 text-[15px] leading-relaxed text-foreground/75">{text}</p>
-      {done && (
-        <p className="mt-4 text-xs uppercase tracking-wider-xs text-gold/70">Уже открыто</p>
-      )}
+      {done && <p className="mt-4 text-xs uppercase tracking-wider-xs text-gold/70">Уже открыто</p>}
       <div className="mt-7">{children}</div>
     </article>
   );
@@ -82,8 +80,8 @@ function Index() {
             Зеркало себя
           </h1>
           <p className="mx-auto mt-8 max-w-xl text-pretty text-base leading-relaxed text-foreground/80">
-            Два независимых отражения одного человека. Одно рождается из ваших образов,
-            другое — из даты рождения. Каждое можно открыть отдельно, а потом свести вместе.
+            Два независимых отражения одного человека. Одно рождается из ваших образов, другое — из
+            даты рождения. Каждое можно открыть отдельно, а потом свести вместе.
           </p>
 
           <div className="mt-12 grid gap-5 text-left sm:grid-cols-2">
@@ -123,7 +121,7 @@ function Index() {
               Встреча зеркал открыта
             </Link>
           )}
-          {(journey.mythDone !== journey.codeDone) && (
+          {journey.mythDone !== journey.codeDone && (
             <p className="mt-8 text-xs leading-relaxed text-muted-foreground">
               Одно зеркало уже открыто. Откройте второе — и станет доступна «Встреча зеркал».
             </p>
@@ -139,18 +137,17 @@ function Index() {
         </h2>
         <div className="mt-8 space-y-6 text-[17px] leading-relaxed text-foreground/85">
           <p>
-            Ведическая нумерология смотрит на числа как на язык. Каждому числу от одного
-            до девяти соответствует планетарный архетип индийской традиции: Солнце и Луна,
-            Юпитер и Сатурн, Венера и Марс, Меркурий и две лунные точки — Раху и Кету.
+            Ведическая нумерология смотрит на числа как на язык. Каждому числу от одного до девяти
+            соответствует планетарный архетип индийской традиции: Солнце и Луна, Юпитер и Сатурн,
+            Венера и Марс, Меркурий и две лунные точки — Раху и Кету.
           </p>
           <p>
-            Это не характеристики и не типы личности. Это скорее набор сил с собственным
-            характером: у каждой есть своё желание, свой способ действовать, своя светлая
-            сторона и своя тень.
+            Это не характеристики и не типы личности. Это скорее набор сил с собственным характером:
+            у каждой есть своё желание, свой способ действовать, своя светлая сторона и своя тень.
           </p>
           <p className="text-muted-foreground">
-            Личный миф работает иначе: он не считает ничего. Он собирает историю из ваших
-            образов — и потому появляется независимо от кода.
+            Личный миф работает иначе: он не считает ничего. Он собирает историю из ваших образов —
+            и потому появляется независимо от кода.
           </p>
         </div>
       </section>
@@ -159,10 +156,12 @@ function Index() {
       <section className="mx-auto max-w-4xl px-6 pb-28">
         <div className="mb-4 max-w-2xl">
           <p className="text-xs uppercase tracking-wider-xs text-gold/80">Коллекция</p>
-          <h2 className="mt-6 text-4xl leading-tight sm:text-5xl">Девять сил как девять объектов</h2>
+          <h2 className="mt-6 text-4xl leading-tight sm:text-5xl">
+            Девять сил как девять объектов
+          </h2>
           <p className="mt-5 text-[17px] leading-relaxed text-foreground/80">
-            Идите вдоль коллекции. Сначала форма и материал, потом одна человеческая фраза —
-            и только если захочется, всё остальное.
+            Идите вдоль коллекции. Сначала форма и материал, потом одна человеческая фраза — и
+            только если захочется, всё остальное.
           </p>
         </div>
         <div>
@@ -201,7 +200,10 @@ function Index() {
             />
           </div>
           <div className="mt-10">
-            <Link to="/myth" className="text-xs uppercase tracking-wider-xs text-gold/80 hover:text-gold">
+            <Link
+              to="/myth"
+              className="text-xs uppercase tracking-wider-xs text-gold/80 hover:text-gold"
+            >
               Или начните с личного мифа
             </Link>
           </div>

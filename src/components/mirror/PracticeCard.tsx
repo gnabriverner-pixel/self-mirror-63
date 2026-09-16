@@ -48,7 +48,7 @@ export function PracticeCard({ a }: { a: Archetype }) {
           <p className="mt-5 text-[15px] leading-relaxed text-foreground/85">{p[tab]}</p>
           <button
             type="button"
-            onClick={() => update({ practiceDoneAt: done ? undefined : today() })}
+            onClick={() => update({ practiceDoneAt: done ? "" : today() })}
             aria-pressed={done}
             className={`mt-6 min-h-11 w-full rounded-sm border px-5 text-xs uppercase tracking-wider-xs transition-colors ${
               done

@@ -103,9 +103,15 @@ function Index() {
               text="Только дата рождения. Пять ключей и символическая карта вашей природы."
               done={journey.codeDone}
             >
-              <Link to="/" hash="врата" className={doorCta}>
-                Войти через дату
-              </Link>
+              {journey.birthDate ? (
+                <Link to="/code" search={{ d: journey.birthDate }} className={doorCta}>
+                  {journey.codeDone ? "Вернуться к карте" : "Продолжить с того же места"}
+                </Link>
+              ) : (
+                <Link to="/" hash="врата" className={doorCta}>
+                  Войти через дату
+                </Link>
+              )}
             </Door>
           </div>
 

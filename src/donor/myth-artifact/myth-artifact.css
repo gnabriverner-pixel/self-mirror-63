@@ -201,7 +201,7 @@
 
 @media (min-width: 640px) {
   .ma-surface { min-height: 44rem; }
-  .ma-heading { inset-top: 2.75rem; }
+  .ma-heading { top: 2.75rem; }
   .ma-relief { top: 20%; height: 60%; }
 }
 

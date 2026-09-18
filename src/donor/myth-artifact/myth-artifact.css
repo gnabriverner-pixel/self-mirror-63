@@ -1,0 +1,221 @@
+.ma-artifact {
+  width: 100%;
+  margin: 0;
+}
+
+.ma-surface {
+  --ma-stone-high: oklch(0.27 0.018 257);
+  --ma-stone-mid: oklch(0.185 0.023 262);
+  --ma-stone-low: oklch(0.115 0.018 264);
+  --ma-line: oklch(0.78 0.03 82 / 58%);
+  --ma-line-soft: oklch(0.7 0.025 82 / 24%);
+  --ma-metal: var(--gold);
+  position: relative;
+  width: min(100%, 34rem);
+  min-height: clamp(35rem, 132vw, 44rem);
+  margin-inline: auto;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  isolation: isolate;
+  box-shadow: var(--shadow-lift);
+}
+
+.ma-stone {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(91deg, transparent 0 3px, var(--veil) 3px 4px),
+    radial-gradient(90% 65% at 28% 8%, var(--ma-stone-high), transparent 62%),
+    linear-gradient(155deg, var(--ma-stone-mid), var(--ma-stone-low));
+}
+
+.ma-heading {
+  position: absolute;
+  inset: 2.1rem 1.5rem auto;
+  z-index: 5;
+  text-align: center;
+}
+
+.ma-heading span,
+.ma-inscription span {
+  color: var(--ma-metal);
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.ma-heading h1 {
+  max-width: 27rem;
+  margin: 0.85rem auto 0;
+  color: var(--foreground);
+  font-size: clamp(2rem, 9vw, 3.5rem);
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.ma-relief {
+  position: absolute;
+  z-index: 2;
+  top: 22%;
+  left: 7%;
+  width: 86%;
+  height: 57%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--ma-line);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ma-field,
+.ma-veil,
+.ma-memory,
+.ma-key,
+.ma-exit {
+  opacity: 0;
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ma-field { transition-delay: 250ms; }
+.ma-veil { transition-delay: 650ms; }
+.ma-memory { transition-delay: 1050ms; }
+.ma-key { transition-delay: 1450ms; }
+.ma-exit { transition-delay: 1850ms; }
+
+.ma-artifact[data-revealed="yes"] :is(.ma-field, .ma-veil, .ma-memory, .ma-key, .ma-exit) {
+  opacity: 1;
+}
+
+.ma-field path {
+  stroke: var(--ma-line-soft);
+  stroke-width: 0.7;
+}
+
+.ma-veil path:first-child {
+  fill: var(--ma-line-soft);
+  stroke-width: 0.5;
+}
+
+.ma-veil path:not(:first-child) {
+  stroke-width: 0.55;
+  opacity: 0.65;
+}
+
+.ma-memory ellipse {
+  stroke-width: 0.55;
+}
+
+.ma-memory ellipse:nth-child(2) { opacity: 0.72; }
+.ma-memory ellipse:nth-child(3) { opacity: 0.52; }
+.ma-memory path {
+  fill: var(--ma-line-soft);
+  stroke-width: 0.7;
+  filter: drop-shadow(0 7px 8px var(--ma-stone-low));
+}
+
+.ma-key {
+  stroke: var(--ma-metal);
+  stroke-width: 1.05;
+}
+
+.ma-key circle {
+  fill: var(--ma-stone-low);
+}
+
+.ma-exit {
+  stroke: var(--ma-metal);
+  stroke-width: 0.65;
+  opacity: 0;
+}
+
+.ma-light {
+  position: absolute;
+  z-index: 4;
+  inset: -20% -75%;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent 43%, var(--veil) 50%, transparent 57%);
+  transform: translateX(-34%);
+}
+
+.ma-artifact[data-revealed="yes"] .ma-light {
+  animation: ma-light-pass 2200ms cubic-bezier(0.4, 0, 0.2, 1) 1 both;
+}
+
+.ma-inscription {
+  position: absolute;
+  z-index: 5;
+  inset: auto 1.75rem 2rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 700ms ease 2100ms, transform 700ms ease 2100ms;
+}
+
+.ma-artifact[data-revealed="yes"] .ma-inscription {
+  opacity: 1;
+  transform: none;
+}
+
+.ma-inscription strong {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 7vw, 2.3rem);
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.ma-inscription p {
+  max-width: 25rem;
+  margin: 0.55rem auto 0;
+  color: var(--muted-foreground);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.ma-edge {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 var(--veil), inset 0 -45px 80px -55px var(--ma-line), inset 0 0 0 1px var(--veil);
+}
+
+.ma-caption {
+  margin-top: 1.2rem;
+  color: var(--muted-foreground);
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@keyframes ma-light-pass {
+  0% { opacity: 0; transform: translateX(-34%); }
+  25% { opacity: 0.8; }
+  75% { opacity: 0.8; }
+  100% { opacity: 0; transform: translateX(34%); }
+}
+
+@media (min-width: 640px) {
+  .ma-surface { min-height: 44rem; }
+  .ma-heading { top: 2.75rem; }
+  .ma-relief { top: 20%; height: 60%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ma-field,
+  .ma-veil,
+  .ma-memory,
+  .ma-key,
+  .ma-exit,
+  .ma-inscription {
+    opacity: 1 !important;
+    transform: none;
+    transition-duration: 1ms;
+    transition-delay: 0ms;
+  }
+  .ma-light { animation: none !important; }
+}

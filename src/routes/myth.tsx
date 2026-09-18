@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Ring } from "@/components/mirror/Ring";
+import { MythArtifact } from "@/donor/myth-artifact";
 import { useJourney, type MythAnswers } from "@/lib/journey";
 import { buildMyth, MYTH_QUESTIONS } from "@/lib/myth";
 
@@ -70,22 +71,17 @@ function MythPage() {
   if (phase === "result") {
     const myth = buildMyth(answers);
     return (
-      <main className="mx-auto max-w-3xl px-6 pb-28 pt-20">
-        <div className="animate-rise text-center">
-          <p className="text-xs uppercase tracking-wider-xs text-gold/80">Первое зеркало · Личный миф</p>
-          <h1 className="mt-6 text-4xl leading-tight text-balance sm:text-6xl">{myth.title}</h1>
+      <main className="mx-auto max-w-4xl px-4 pb-28 pt-8 sm:px-6 sm:pt-16">
+        <div className="animate-rise">
+          <MythArtifact
+            answers={answers}
+            title={myth.title}
+            keyName={myth.keyName}
+            keyLine={myth.keyLine}
+          />
         </div>
 
-        <div className="mt-16 flex flex-col items-center text-center">
-          <Ring size={200} />
-          <p className="mt-8 text-xs uppercase tracking-wider-xs text-gold/80">Ключ вашей истории</p>
-          <h2 className="mt-3 text-3xl leading-tight sm:text-4xl">{myth.keyName}</h2>
-          <p className="mt-3 max-w-md text-[15px] leading-relaxed text-muted-foreground">
-            {myth.keyLine}
-          </p>
-        </div>
-
-        <article className="mt-16 space-y-7 text-[18px] leading-[1.85] text-foreground/88">
+        <article className="mx-auto mt-20 max-w-2xl space-y-7 text-[18px] leading-[1.85] text-foreground/88">
           {myth.story.map((p, i) => (
             <p key={i} className={i === 0 ? "first-letter:float-left first-letter:mr-3 first-letter:font-[var(--font-display)] first-letter:text-6xl first-letter:leading-[0.85] first-letter:text-gold" : ""}>
               {p}
@@ -93,23 +89,28 @@ function MythPage() {
           ))}
         </article>
 
-        <section className="mt-16 rounded-sm border border-border bg-card/40 p-7 backdrop-blur-sm">
+        <section className="mx-auto mt-16 max-w-2xl border-y border-border py-9">
           <p className="text-xs uppercase tracking-wider-xs text-gold/80">
             Из каких ваших образов она родилась
           </p>
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
             {MYTH_QUESTIONS.map((mq) => (
-              <span
+              <div
                 key={mq.id}
-                className="max-w-full break-words rounded-sm border border-gold/30 bg-gold/5 px-4 py-2 text-sm text-foreground/85"
+                className="border-l border-gold/35 pl-4"
               >
-                {answers[mq.id]}
-              </span>
+                <span className="block text-[10px] uppercase tracking-wider-xs text-muted-foreground">
+                  {mq.index}
+                </span>
+                <span className="mt-2 block break-words text-sm leading-relaxed text-foreground/85">
+                  {answers[mq.id]}
+                </span>
+              </div>
             ))}
           </div>
         </section>
 
-        <section className="mt-12 border-y border-gold/30 py-10 text-center">
+        <section className="mx-auto mt-12 max-w-2xl border-b border-gold/30 pb-12 text-center">
           <p className="text-xs uppercase tracking-wider-xs text-gold/80">Зеркальный вопрос</p>
           <p className="mx-auto mt-5 max-w-xl text-[19px] leading-relaxed text-foreground/90">
             {myth.question}

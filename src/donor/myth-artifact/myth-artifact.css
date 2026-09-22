@@ -57,10 +57,10 @@
 .ma-relief {
   position: absolute;
   z-index: 2;
-  top: 22%;
+  top: 26%;
   left: 7%;
   width: 86%;
-  height: 57%;
+  height: 52%;
   overflow: visible;
   fill: none;
   stroke: var(--ma-line);
@@ -202,7 +202,7 @@
 @media (min-width: 640px) {
   .ma-surface { min-height: 44rem; }
   .ma-heading { top: 2.75rem; }
-  .ma-relief { top: 20%; height: 60%; }
+  .ma-relief { top: 24%; height: 54%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -213,9 +213,9 @@
   .ma-exit,
   .ma-inscription {
     opacity: 1 !important;
-    transform: none;
     transition-duration: 1ms;
     transition-delay: 0ms;
   }
+  .ma-inscription { transform: none; }
   .ma-light { animation: none !important; }
 }

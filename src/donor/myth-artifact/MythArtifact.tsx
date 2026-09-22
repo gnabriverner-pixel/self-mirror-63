@@ -78,14 +78,23 @@ export function MythArtifact({ answers, title, keyName, keyLine }: MythArtifactP
             <path d="M-26 9 Q-8 -21 18 -17 Q34 -2 19 19 Q-3 31 -26 9Z" />
           </g>
 
-          <g className="ma-key" transform={`translate(${geometry.cx} ${geometry.cy}) rotate(${geometry.tilt * -0.35})`}>
+          <g
+            className="ma-key"
+            transform={`translate(${geometry.cx} ${geometry.cy}) rotate(${geometry.tilt * -0.35})`}
+          >
             <circle cx="0" cy="0" r="5.5" />
-            <path d={`M0 5.5 V${geometry.opening + 24} M0 ${geometry.opening + 13} H10 M0 ${geometry.opening + 19} H6`} />
+            <path
+              d={`M0 5.5 V${geometry.opening + 24} M0 ${geometry.opening + 13} H10 M0 ${geometry.opening + 19} H6`}
+            />
           </g>
 
           <g className="ma-exit">
-            <path d={`M${geometry.cx} ${geometry.cy + 28} L${geometry.cx + geometry.tilt / 2} 107`} />
-            <path d={`M${geometry.cx - 8} 103 L${geometry.cx + geometry.tilt / 2} 111 L${geometry.cx + 9} 103`} />
+            <path
+              d={`M${geometry.cx} ${geometry.cy + 28} L${geometry.cx + geometry.tilt / 2} 107`}
+            />
+            <path
+              d={`M${geometry.cx - 8} 103 L${geometry.cx + geometry.tilt / 2} 111 L${geometry.cx + 9} 103`}
+            />
           </g>
         </svg>
 

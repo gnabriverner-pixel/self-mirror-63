@@ -57,10 +57,10 @@
 .ma-relief {
   position: absolute;
   z-index: 2;
-  top: 22%;
+  top: 26%;
   left: 7%;
   width: 86%;
-  height: 57%;
+  height: 52%;
   overflow: visible;
   fill: none;
   stroke: var(--ma-line);
@@ -77,11 +77,21 @@
   transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.ma-field { transition-delay: 250ms; }
-.ma-veil { transition-delay: 650ms; }
-.ma-memory { transition-delay: 1050ms; }
-.ma-key { transition-delay: 1450ms; }
-.ma-exit { transition-delay: 1850ms; }
+.ma-field {
+  transition-delay: 250ms;
+}
+.ma-veil {
+  transition-delay: 650ms;
+}
+.ma-memory {
+  transition-delay: 1050ms;
+}
+.ma-key {
+  transition-delay: 1450ms;
+}
+.ma-exit {
+  transition-delay: 1850ms;
+}
 
 .ma-artifact[data-revealed="yes"] :is(.ma-field, .ma-veil, .ma-memory, .ma-key, .ma-exit) {
   opacity: 1;
@@ -106,8 +116,12 @@
   stroke-width: 0.55;
 }
 
-.ma-memory ellipse:nth-child(2) { opacity: 0.72; }
-.ma-memory ellipse:nth-child(3) { opacity: 0.52; }
+.ma-memory ellipse:nth-child(2) {
+  opacity: 0.72;
+}
+.ma-memory ellipse:nth-child(3) {
+  opacity: 0.52;
+}
 .ma-memory path {
   fill: var(--ma-line-soft);
   stroke-width: 0.7;
@@ -149,7 +163,9 @@
   text-align: center;
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 700ms ease 2100ms, transform 700ms ease 2100ms;
+  transition:
+    opacity 700ms ease 2100ms,
+    transform 700ms ease 2100ms;
 }
 
 .ma-artifact[data-revealed="yes"] .ma-inscription {
@@ -180,7 +196,10 @@
   z-index: 6;
   inset: 0;
   pointer-events: none;
-  box-shadow: inset 0 1px 0 var(--veil), inset 0 -45px 80px -55px var(--ma-line), inset 0 0 0 1px var(--veil);
+  box-shadow:
+    inset 0 1px 0 var(--veil),
+    inset 0 -45px 80px -55px var(--ma-line),
+    inset 0 0 0 1px var(--veil);
 }
 
 .ma-caption {
@@ -193,16 +212,33 @@
 }
 
 @keyframes ma-light-pass {
-  0% { opacity: 0; transform: translateX(-34%); }
-  25% { opacity: 0.8; }
-  75% { opacity: 0.8; }
-  100% { opacity: 0; transform: translateX(34%); }
+  0% {
+    opacity: 0;
+    transform: translateX(-34%);
+  }
+  25% {
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(34%);
+  }
 }
 
 @media (min-width: 640px) {
-  .ma-surface { min-height: 44rem; }
-  .ma-heading { top: 2.75rem; }
-  .ma-relief { top: 20%; height: 60%; }
+  .ma-surface {
+    min-height: 44rem;
+  }
+  .ma-heading {
+    top: 2.75rem;
+  }
+  .ma-relief {
+    top: 24%;
+    height: 54%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -213,9 +249,13 @@
   .ma-exit,
   .ma-inscription {
     opacity: 1 !important;
-    transform: none;
     transition-duration: 1ms;
     transition-delay: 0ms;
   }
-  .ma-light { animation: none !important; }
+  .ma-inscription {
+    transform: none;
+  }
+  .ma-light {
+    animation: none !important;
+  }
 }

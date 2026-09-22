@@ -83,7 +83,14 @@ function MythPage() {
 
         <article className="mx-auto mt-20 max-w-2xl space-y-7 text-[18px] leading-[1.85] text-foreground/88">
           {myth.story.map((p, i) => (
-            <p key={i} className={i === 0 ? "first-letter:float-left first-letter:mr-3 first-letter:font-[var(--font-display)] first-letter:text-6xl first-letter:leading-[0.85] first-letter:text-gold" : ""}>
+            <p
+              key={i}
+              className={
+                i === 0
+                  ? "first-letter:float-left first-letter:mr-3 first-letter:font-[var(--font-display)] first-letter:text-6xl first-letter:leading-[0.85] first-letter:text-gold"
+                  : ""
+              }
+            >
               {p}
             </p>
           ))}
@@ -95,10 +102,7 @@ function MythPage() {
           </p>
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             {MYTH_QUESTIONS.map((mq) => (
-              <div
-                key={mq.id}
-                className="border-l border-gold/35 pl-4"
-              >
+              <div key={mq.id} className="border-l border-gold/35 pl-4">
                 <span className="block text-[10px] uppercase tracking-wider-xs text-muted-foreground">
                   {mq.index}
                 </span>
@@ -134,7 +138,10 @@ function MythPage() {
               Открыть второе зеркало · Цифровой код
             </Link>
           )}
-          <Link to="/" className="text-xs uppercase tracking-wider-xs text-muted-foreground hover:text-gold">
+          <Link
+            to="/"
+            className="text-xs uppercase tracking-wider-xs text-muted-foreground hover:text-gold"
+          >
             В начало
           </Link>
         </div>
@@ -161,9 +168,7 @@ function MythPage() {
           <button
             disabled={value.trim().length < 2}
             onClick={() =>
-              step === MYTH_QUESTIONS.length - 1
-                ? setPhase("loading")
-                : setStep((s) => s + 1)
+              step === MYTH_QUESTIONS.length - 1 ? setPhase("loading") : setStep((s) => s + 1)
             }
             className="rounded-sm border border-gold/60 bg-gold/10 px-8 py-4 text-xs uppercase tracking-wider-xs text-gold transition-all hover:bg-gold/20 hover:shadow-[var(--shadow-halo)] disabled:cursor-not-allowed disabled:opacity-35"
           >

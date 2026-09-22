@@ -1,6 +1,7 @@
 # Roadmap
 
 ## DONOR V2 — Personal Relief
+
 - [x] Модуль `src/donor/personal-relief/` (типы, композиция, компонент, CSS, provenance, demo)
 - [x] Экран `/donor/personal-relief-v2` (reveal, skip/replay/reduced motion, 12 demo)
 - [x] Интеграция главного рельефа в `/code` перед сеткой позиций
@@ -10,11 +11,13 @@
 - [ ] routes:check, lint, build
 
 ## Полноценная сессия (новая задача)
+
 - [x] Сквозной путь: дата → карта → личный миф → встреча → практика дня
 - [x] Прогресс в localStorage (`mirror_journey_v1`): дата, шаг карты, ответы мифа, практика
 - [x] Возврат к прерванному месту с главной
 
 ## Личный Миф как визуальный артефакт
+
 - [x] Детерминированный монолитный рельеф из четырёх пользовательских образов
 - [x] Интеграция в результат `/myth` с полным текстом вторым слоем
 - [x] Mobile/desktop, reduced motion и browser QA

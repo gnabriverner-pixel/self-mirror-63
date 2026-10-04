@@ -5,9 +5,9 @@
 - [x] Модуль `src/donor/personal-relief/` (типы, композиция, компонент, CSS, provenance, demo)
 - [x] Экран `/donor/personal-relief-v2` (reveal, skip/replay/reduced motion, 12 demo)
 - [x] Интеграция главного рельефа в `/code` перед сеткой позиций
-- [ ] Пантеон V2 и проверка девяти объектов
-- [ ] Screenshots `screenshots/donor-v2/` (390/768/1440)
-- [ ] `DONOR_EXPORT_v2.md`
+- [x] Пантеон V2 и проверка девяти объектов
+- [x] Screenshots `screenshots/donor-v2/` (390/768/1440)
+- [x] `DONOR_EXPORT_v2.md`
 - [ ] routes:check, lint, build
 
 ## Полноценная сессия (новая задача)

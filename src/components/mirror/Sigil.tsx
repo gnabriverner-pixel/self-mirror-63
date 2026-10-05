@@ -6,7 +6,12 @@
 const px = (v: number) => Math.round((100 + v) * 100) / 100;
 
 export function Sigil({ n, className = "" }: { n: number; className?: string }) {
-  const s = { fill: "none", stroke: "currentColor", strokeLinecap: "round", strokeLinejoin: "round" } as const;
+  const s = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+  } as const;
   return (
     <svg viewBox="0 0 200 200" className={className} aria-hidden="true">
       <g {...s} strokeWidth={1.1} className="sigil-draw">
@@ -26,14 +31,15 @@ function glyph(n: number) {
           <circle cx="100" cy="100" r="3.5" />
           {Array.from({ length: 12 }).map((_, i) => {
             const a = (i * Math.PI) / 6;
-            const r1 = 36, r2 = i % 2 ? 48 : 62;
+            const r1 = 36,
+              r2 = i % 2 ? 48 : 62;
             return (
               <line
                 key={i}
-                x1={px(Math.cos(a) * (r1))}
-                y1={px(Math.sin(a) * (r1))}
-                x2={px(Math.cos(a) * (r2))}
-                y2={px(Math.sin(a) * (r2))}
+                x1={px(Math.cos(a) * r1)}
+                y1={px(Math.sin(a) * r1)}
+                x2={px(Math.cos(a) * r2)}
+                y2={px(Math.sin(a) * r2)}
               />
             );
           })}
@@ -73,15 +79,17 @@ function glyph(n: number) {
         <>
           {[0, 1, 2, 3, 4].map((i) => {
             const a = (i * 2 * Math.PI) / 5 - Math.PI / 2;
-            return <circle key={i} cx={px(Math.cos(a) * (50))} cy={px(Math.sin(a) * (50))} r="4" />;
+            return <circle key={i} cx={px(Math.cos(a) * 50)} cy={px(Math.sin(a) * 50)} r="4" />;
           })}
           <path
-            d={Array.from({ length: 5 })
-              .map((_, i) => {
-                const a = (((i * 2) % 5) * 2 * Math.PI) / 5 - Math.PI / 2;
-                return `${i ? "L" : "M"}${px(Math.cos(a) * (50))} ${px(Math.sin(a) * (50))}`;
-              })
-              .join(" ") + " Z"}
+            d={
+              Array.from({ length: 5 })
+                .map((_, i) => {
+                  const a = (((i * 2) % 5) * 2 * Math.PI) / 5 - Math.PI / 2;
+                  return `${i ? "L" : "M"}${px(Math.cos(a) * 50)} ${px(Math.sin(a) * 50)}`;
+                })
+                .join(" ") + " Z"
+            }
             strokeWidth={0.7}
           />
           <circle cx="100" cy="100" r="8" />
@@ -92,7 +100,14 @@ function glyph(n: number) {
       return (
         <>
           {Array.from({ length: 6 }).map((_, i) => (
-            <ellipse key={i} cx="100" cy="70" rx="16" ry="34" transform={`rotate(${i * 60} 100 100)`} />
+            <ellipse
+              key={i}
+              cx="100"
+              cy="70"
+              rx="16"
+              ry="34"
+              transform={`rotate(${i * 60} 100 100)`}
+            />
           ))}
           <circle cx="100" cy="100" r="9" />
         </>
@@ -103,10 +118,7 @@ function glyph(n: number) {
         <>
           <path d="M100 40v92" />
           <path d="M100 44c26 4 34 14 34 22s-8 16-34 20" />
-          <path
-            d="M100 132c-18 0-30 8-30 18s12 16 30 16 32-6 32-16"
-            strokeDasharray="5 7"
-          />
+          <path d="M100 132c-18 0-30 8-30 18s12 16 30 16 32-6 32-16" strokeDasharray="5 7" />
           <circle cx="100" cy="36" r="4" />
         </>
       );
@@ -115,7 +127,14 @@ function glyph(n: number) {
       return (
         <>
           <rect x="66" y="66" width="68" height="68" />
-          <rect x="66" y="66" width="68" height="68" transform="rotate(45 100 100)" strokeWidth={0.6} />
+          <rect
+            x="66"
+            y="66"
+            width="68"
+            height="68"
+            transform="rotate(45 100 100)"
+            strokeWidth={0.6}
+          />
           <ellipse cx="100" cy="100" rx="76" ry="26" transform="rotate(-18 100 100)" />
           <line x1="100" y1="100" x2="100" y2="66" strokeWidth={0.8} />
         </>

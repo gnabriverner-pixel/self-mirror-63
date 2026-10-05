@@ -35,12 +35,7 @@ function reducePath(n: number): number[] {
   return path;
 }
 
-function makePosition(
-  key: string,
-  label: string,
-  question: string,
-  raw: number,
-): Position {
+function makePosition(key: string, label: string, question: string, raw: number): Position {
   const path = reducePath(raw);
   const value = path[path.length - 1] ?? 9;
   return { key, label, question, path, value, archetype: ARCHETYPES[value]! };
@@ -110,9 +105,18 @@ export function tensionText(a: Archetype, b: Archetype): string {
 }
 
 export const MONTHS = [
-  "января","февраля","марта","апреля","мая","июня",
-  "июля","августа","сентября","октября","ноября","декабря",
+  "января",
+  "февраля",
+  "марта",
+  "апреля",
+  "мая",
+  "июня",
+  "июля",
+  "августа",
+  "сентября",
+  "октября",
+  "ноября",
+  "декабря",
 ];
 
-export const formatDate = (d: Date) =>
-  `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+export const formatDate = (d: Date) => `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;

@@ -8,9 +8,21 @@ export function Ring({ size = 200, label }: { size?: number; label?: string }) {
             "radial-gradient(circle at 50% 50%, oklch(0.86 0.05 250 / 60%), transparent 68%)",
         }}
       />
-      <svg viewBox="0 0 200 200" className="animate-spin-slow absolute inset-0" style={{ color: "var(--gold-soft)" }}>
+      <svg
+        viewBox="0 0 200 200"
+        className="animate-spin-slow absolute inset-0"
+        style={{ color: "var(--gold-soft)" }}
+      >
         <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" strokeWidth="0.5" />
-        <circle cx="100" cy="100" r="74" fill="none" stroke="currentColor" strokeWidth="0.3" strokeDasharray="2 7" />
+        <circle
+          cx="100"
+          cy="100"
+          r="74"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.3"
+          strokeDasharray="2 7"
+        />
         <circle cx="100" cy="100" r="56" fill="none" stroke="currentColor" strokeWidth="0.3" />
       </svg>
       <div

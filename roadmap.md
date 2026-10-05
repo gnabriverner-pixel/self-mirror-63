@@ -8,7 +8,7 @@
 - [x] Пантеон V2 и проверка девяти объектов
 - [x] Screenshots `screenshots/donor-v2/` (390/768/1440)
 - [x] `DONOR_EXPORT_v2.md`
-- [ ] routes:check, lint, build
+- [x] routes:check, lint, build
 
 ## Полноценная сессия (новая задача)
 

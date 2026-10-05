@@ -33,9 +33,8 @@ function DonorPortrait() {
       <p className="text-xs uppercase tracking-wider-xs text-gold/80">Donor Lab · visual R&amp;D</p>
       <h1 className="mt-5 text-4xl leading-tight sm:text-6xl">Символический портрет</h1>
       <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-foreground/75">
-        Не портрет лица и не вывод о человеке. Проверка одной гипотезы: может ли сочетание
-        объектов, материала, света и плотности давать артефакт, который ощущается как чей-то
-        собственный.
+        Не портрет лица и не вывод о человеке. Проверка одной гипотезы: может ли сочетание объектов,
+        материала, света и плотности давать артефакт, который ощущается как чей-то собственный.
       </p>
       <p className="mt-4 max-w-2xl text-xs uppercase tracking-wider-xs text-muted-foreground">
         Все композиции ниже — demo data

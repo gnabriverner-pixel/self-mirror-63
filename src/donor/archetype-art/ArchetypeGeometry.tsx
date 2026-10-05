@@ -31,7 +31,14 @@ export function ArchetypeGeometry({ n }: { n: ArchetypeNumber }) {
       </defs>
       <g className="aa-relief">{shape(n)}</g>
       <g clipPath={`url(#${clip})`}>
-        <rect className="aa-sheen-bar" x="-140" y="-40" width="120" height="280" fill={`url(#${sheen})`} />
+        <rect
+          className="aa-sheen-bar"
+          x="-140"
+          y="-40"
+          width="120"
+          height="280"
+          fill={`url(#${sheen})`}
+        />
       </g>
     </svg>
   );
@@ -80,7 +87,10 @@ function shape(n: ArchetypeNumber) {
     case 3:
       return (
         <g className="aa-sig aa-sig-3">
-          <path className="aa-mass" d="M100 44c26 24 40 46 40 66 0 22-17 38-40 50-23-12-40-28-40-50 0-20 14-42 40-66z" />
+          <path
+            className="aa-mass"
+            d="M100 44c26 24 40 46 40 66 0 22-17 38-40 50-23-12-40-28-40-50 0-20 14-42 40-66z"
+          />
           <path className="aa-line" d="M100 58v96" />
           <path className="aa-line" d="M100 106c-16-7-27-19-31-35M100 106c16-7 27-19 31-35" />
           <g className="aa-arc-set">
@@ -182,8 +192,22 @@ function shape(n: ArchetypeNumber) {
         <g className="aa-sig aa-sig-8">
           <rect className="aa-mass" x="62" y="62" width="76" height="76" />
           <rect className="aa-line" x="62" y="62" width="76" height="76" />
-          <rect className="aa-line aa-hair" x="62" y="62" width="76" height="76" transform="rotate(45 100 100)" />
-          <ellipse className="aa-line" cx="100" cy="100" rx="84" ry="28" transform="rotate(-18 100 100)" />
+          <rect
+            className="aa-line aa-hair"
+            x="62"
+            y="62"
+            width="76"
+            height="76"
+            transform="rotate(45 100 100)"
+          />
+          <ellipse
+            className="aa-line"
+            cx="100"
+            cy="100"
+            rx="84"
+            ry="28"
+            transform="rotate(-18 100 100)"
+          />
           <line className="aa-line" x1="100" y1="62" x2="100" y2="138" />
         </g>
       );

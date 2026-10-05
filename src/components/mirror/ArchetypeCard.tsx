@@ -16,7 +16,11 @@ export function ArchetypeCard({ a, index = 0 }: { a: Archetype; index?: number }
       style={{ animationDelay: `${Math.min(index, 8) * 90}ms` }}
     >
       <div className="flex justify-start">
-        <ArchetypeEmblem number={a.n} variant={index % 2 === 0 ? "alabaster" : "obsidian"} size="md" />
+        <ArchetypeEmblem
+          number={a.n}
+          variant={index % 2 === 0 ? "alabaster" : "obsidian"}
+          size="md"
+        />
       </div>
 
       <div className="min-w-0">

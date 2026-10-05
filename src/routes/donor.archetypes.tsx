@@ -41,8 +41,8 @@ function DonorArchetypes() {
       <p className="text-xs uppercase tracking-wider-xs text-gold/80">Donor Lab · visual R&amp;D</p>
       <h1 className="mt-5 text-4xl leading-tight sm:text-6xl">Девять объектов</h1>
       <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-foreground/75">
-        Это не пользовательский экран. Здесь проверяется одно: если убрать подпись и цифру,
-        девять объектов всё равно должны читаться как девять разных характеров.
+        Это не пользовательский экран. Здесь проверяется одно: если убрать подпись и цифру, девять
+        объектов всё равно должны читаться как девять разных характеров.
       </p>
 
       <div className="sticky top-0 z-10 -mx-5 mt-10 flex flex-wrap gap-2 border-y border-border/60 bg-background/85 px-5 py-4 backdrop-blur sm:-mx-8 sm:px-8">
@@ -123,12 +123,18 @@ function DonorArchetypes() {
       <section className="mt-20 border-t border-border/60 pt-12">
         <h2 className="text-3xl">Reduced motion</h2>
         <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
-          В этом ряду анимация выключена принудительно: объекты должны выглядеть законченными
-          в состоянии покоя, без «недорисованных» линий.
+          В этом ряду анимация выключена принудительно: объекты должны выглядеть законченными в
+          состоянии покоя, без «недорисованных» линий.
         </p>
         <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-5 lg:grid-cols-9">
           {ARCHETYPE_NUMBERS.map((n) => (
-            <ArchetypeEmblem key={`rm-${n}`} number={n} variant={variant} size={96} motion="reduced" />
+            <ArchetypeEmblem
+              key={`rm-${n}`}
+              number={n}
+              variant={variant}
+              size={96}
+              motion="reduced"
+            />
           ))}
         </div>
       </section>

@@ -156,9 +156,22 @@
 
 /* ---------- ступени раскрытия ---------- */
 
-.pr-relief:is([data-stage="1"], [data-stage="2"], [data-stage="3"], [data-stage="4"], [data-stage="5"], [data-stage="6"])
+.pr-relief:is(
+    [data-stage="1"],
+    [data-stage="2"],
+    [data-stage="3"],
+    [data-stage="4"],
+    [data-stage="5"],
+    [data-stage="6"]
+  )
   .pr-object[data-step="1"],
-.pr-relief:is([data-stage="2"], [data-stage="3"], [data-stage="4"], [data-stage="5"], [data-stage="6"])
+.pr-relief:is(
+    [data-stage="2"],
+    [data-stage="3"],
+    [data-stage="4"],
+    [data-stage="5"],
+    [data-stage="6"]
+  )
   .pr-object[data-step="2"],
 .pr-relief:is([data-stage="3"], [data-stage="4"], [data-stage="5"], [data-stage="6"])
   .pr-object[data-step="3"],
@@ -181,12 +194,7 @@
   z-index: 7;
   pointer-events: none;
   opacity: 0;
-  background: linear-gradient(
-    100deg,
-    transparent 42%,
-    var(--aa-sheen) 50%,
-    transparent 58%
-  );
+  background: linear-gradient(100deg, transparent 42%, var(--aa-sheen) 50%, transparent 58%);
   mix-blend-mode: soft-light;
   transform: translateX(-40%);
 }

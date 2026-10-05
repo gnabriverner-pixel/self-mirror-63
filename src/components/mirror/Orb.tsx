@@ -49,19 +49,44 @@ export function Orb({
         style={{ color: "var(--gold-soft)" }}
       >
         <circle cx="100" cy="100" r="94" fill="none" stroke="currentColor" strokeWidth="0.4" />
-        <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="0.3" strokeDasharray="1 5" />
-        <rect x="34" y="34" width="132" height="132" fill="none" stroke="currentColor" strokeWidth="0.3" transform="rotate(45 100 100)" />
-        <rect x="34" y="34" width="132" height="132" fill="none" stroke="currentColor" strokeWidth="0.3" />
+        <circle
+          cx="100"
+          cy="100"
+          r="80"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.3"
+          strokeDasharray="1 5"
+        />
+        <rect
+          x="34"
+          y="34"
+          width="132"
+          height="132"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.3"
+          transform="rotate(45 100 100)"
+        />
+        <rect
+          x="34"
+          y="34"
+          width="132"
+          height="132"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.3"
+        />
         {detailed &&
           Array.from({ length: 36 }).map((_, i) => {
             const a = (i * Math.PI) / 18;
             return (
               <line
                 key={i}
-                x1={px(Math.cos(a) * (88))}
-                y1={px(Math.sin(a) * (88))}
-                x2={px(Math.cos(a) * ((i % 3 ? 91 : 94)))}
-                y2={px(Math.sin(a) * ((i % 3 ? 91 : 94)))}
+                x1={px(Math.cos(a) * 88)}
+                y1={px(Math.sin(a) * 88)}
+                x2={px(Math.cos(a) * (i % 3 ? 91 : 94))}
+                y2={px(Math.sin(a) * (i % 3 ? 91 : 94))}
                 stroke="currentColor"
                 strokeWidth="0.4"
               />
@@ -105,8 +130,7 @@ export function Orb({
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "radial-gradient(circle at 78% 82%, oklch(0 0 0 / 65%), transparent 62%)",
+            background: "radial-gradient(circle at 78% 82%, oklch(0 0 0 / 65%), transparent 62%)",
           }}
         />
       </div>

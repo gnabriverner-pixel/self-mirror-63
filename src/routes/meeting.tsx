@@ -48,22 +48,32 @@ function MeetingPage() {
         <div className="animate-rise">
           <h1 className="text-4xl leading-tight sm:text-5xl">Встреча зеркал ещё закрыта</h1>
           <p className="mt-6 text-[17px] leading-relaxed text-foreground/80">
-            Чтобы два отражения встретились, нужно, чтобы каждое появилось независимо от
-            другого. {journey.mythDone ? "Личный миф уже написан — осталcя Цифровой код." : null}
+            Чтобы два отражения встретились, нужно, чтобы каждое появилось независимо от другого.{" "}
+            {journey.mythDone ? "Личный миф уже написан — осталcя Цифровой код." : null}
             {journey.codeDone ? " Цифровой код уже открыт — остался Личный миф." : null}
           </p>
           <div className="mt-10 flex flex-col items-center gap-3">
             {!journey.mythDone && (
-              <Link to="/myth" className="rounded-sm border border-gold/60 bg-gold/10 px-8 py-4 text-xs uppercase tracking-wider-xs text-gold hover:bg-gold/20">
+              <Link
+                to="/myth"
+                className="rounded-sm border border-gold/60 bg-gold/10 px-8 py-4 text-xs uppercase tracking-wider-xs text-gold hover:bg-gold/20"
+              >
                 Открыть Личный миф
               </Link>
             )}
             {!journey.codeDone && (
-              <Link to="/" hash="врата" className="rounded-sm border border-gold/60 bg-gold/10 px-8 py-4 text-xs uppercase tracking-wider-xs text-gold hover:bg-gold/20">
+              <Link
+                to="/"
+                hash="врата"
+                className="rounded-sm border border-gold/60 bg-gold/10 px-8 py-4 text-xs uppercase tracking-wider-xs text-gold hover:bg-gold/20"
+              >
                 Открыть Цифровой код
               </Link>
             )}
-            <Link to="/" className="text-xs uppercase tracking-wider-xs text-muted-foreground hover:text-gold">
+            <Link
+              to="/"
+              className="text-xs uppercase tracking-wider-xs text-muted-foreground hover:text-gold"
+            >
               В начало
             </Link>
           </div>
@@ -102,15 +112,18 @@ function MeetingPage() {
       </div>
 
       <p className="mx-auto mt-14 max-w-xl text-center text-[17px] leading-relaxed text-foreground/85">
-        Эти две версии появились независимо. Одна — из даты. Другая — из ваших образов. Они
-        ничего не доказывают, но подсвечивают главное.
+        Эти две версии появились независимо. Одна — из даты. Другая — из ваших образов. Они ничего
+        не доказывают, но подсвечивают главное.
       </p>
 
       <section className="mt-16">
         <p className="text-xs uppercase tracking-wider-xs text-gold/80">✨ Параллели</p>
         <div className="mt-6 space-y-4">
           {s.parallels.map((p, i) => (
-            <div key={i} className="rounded-sm border border-border bg-card/40 p-6 text-[16px] leading-relaxed text-foreground/85 backdrop-blur-sm">
+            <div
+              key={i}
+              className="rounded-sm border border-border bg-card/40 p-6 text-[16px] leading-relaxed text-foreground/85 backdrop-blur-sm"
+            >
               {p}
             </div>
           ))}
@@ -144,9 +157,15 @@ function MeetingPage() {
       </div>
 
       <div className="mt-16 flex flex-wrap justify-center gap-6 text-xs uppercase tracking-wider-xs text-muted-foreground">
-        <Link to="/myth" className="hover:text-gold">Личный миф</Link>
-        <Link to="/code" search={{ d: journey.birthDate! }} className="hover:text-gold">Цифровой код</Link>
-        <Link to="/" className="hover:text-gold">В начало</Link>
+        <Link to="/myth" className="hover:text-gold">
+          Личный миф
+        </Link>
+        <Link to="/code" search={{ d: journey.birthDate! }} className="hover:text-gold">
+          Цифровой код
+        </Link>
+        <Link to="/" className="hover:text-gold">
+          В начало
+        </Link>
       </div>
     </main>
   );

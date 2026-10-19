@@ -75,15 +75,11 @@ function Index() {
           className="entry-exhibit"
         />
         <div className="entry-content">
-          <p className="entry-tag">
-            Личный миф ∥ Цифровой код
-          </p>
-          <h1 id="entry-title">
-            Зеркало себя
-          </h1>
+          <p className="entry-tag">Личный миф ∥ Цифровой код</p>
+          <h1 id="entry-title">Зеркало себя</h1>
           <p className="entry-intro">
-            Одно отражение — из ваших образов. Другое — из даты рождения.
-            Между ними можете узнать себя.
+            Одно отражение — из ваших образов. Другое — из даты рождения. Между ними можете узнать
+            себя.
           </p>
 
           <div className="entry-doors">
@@ -95,7 +91,8 @@ function Index() {
             >
               <Button asChild variant="ghost" className={doorCta}>
                 <Link to="/myth">
-                  {journey.mythDone ? "К мифу" : "Через образы"}<ArrowRight aria-hidden="true" />
+                  {journey.mythDone ? "К мифу" : "Через образы"}
+                  <ArrowRight aria-hidden="true" />
                 </Link>
               </Button>
             </Door>
@@ -108,12 +105,16 @@ function Index() {
               {journey.birthDate ? (
                 <Button asChild variant="ghost" className={doorCta}>
                   <Link to="/code" search={{ d: journey.birthDate }}>
-                    {journey.codeDone ? "К карте" : "Продолжить"}<ArrowRight aria-hidden="true" />
+                    {journey.codeDone ? "К карте" : "Продолжить"}
+                    <ArrowRight aria-hidden="true" />
                   </Link>
                 </Button>
               ) : (
                 <Button asChild variant="ghost" className={doorCta}>
-                  <Link to="/" hash="врата">Через дату<ArrowRight aria-hidden="true" /></Link>
+                  <Link to="/" hash="врата">
+                    Через дату
+                    <ArrowRight aria-hidden="true" />
+                  </Link>
                 </Button>
               )}
             </Door>
@@ -121,7 +122,10 @@ function Index() {
 
           {journey.mythDone && journey.codeDone && (
             <Button asChild variant="ghost" className="entry-meeting">
-              <Link to="/meeting">Встреча зеркал открыта<ArrowRight aria-hidden="true" /></Link>
+              <Link to="/meeting">
+                Встреча зеркал открыта
+                <ArrowRight aria-hidden="true" />
+              </Link>
             </Button>
           )}
           {journey.mythDone !== journey.codeDone && (
@@ -133,7 +137,8 @@ function Index() {
             <p className="entry-progress">Два независимых пути. Затем — Встреча зеркал.</p>
           )}
           <a href="#коллекция" className="entry-next" aria-label="К коллекции девяти сил">
-            <span>Девять сил · коллекция</span><ArrowDown size={16} aria-hidden="true" />
+            <span>Девять сил · коллекция</span>
+            <ArrowDown size={16} aria-hidden="true" />
           </a>
         </div>
       </section>

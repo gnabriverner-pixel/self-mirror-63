@@ -1,4 +1,5 @@
 <!-- LOVABLE:BEGIN -->
+
 > [!IMPORTANT]
 > This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
 > published git history — force pushing, or rebasing/amending/squashing commits
@@ -7,6 +8,7 @@
 >
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
+
 <!-- LOVABLE:END -->
 
 # AGENTS.md — Web Surface Contract
@@ -72,3 +74,7 @@ Do not maintain a second mutable Web-only project status.
 If Web work materially changes current release state, product architecture, routing, privacy behavior or the active gate, update canonical DCS `STATUS.md` in the corresponding control-plane change or explicitly report that it is pending.
 
 Model-specific adapters must remain thin and must not duplicate mutable project state.
+
+## Presentation boundaries
+
+- Keep the home exhibition styling isolated from calculation and journey modules; visual refinements must preserve the two independent entry paths.

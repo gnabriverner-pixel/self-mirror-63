@@ -7,6 +7,7 @@ import { ARCHETYPE_LIST } from "@/lib/archetypes";
 import { ArchetypeCard } from "@/components/mirror/ArchetypeCard";
 import { DateEntry } from "@/components/mirror/DateEntry";
 import { useJourney } from "@/lib/journey";
+import "@/components/mirror/entry-hall.css";
 
 export const Route = createFileRoute("/")({
   head: () => ({

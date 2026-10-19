@@ -72,3 +72,7 @@ Do not maintain a second mutable Web-only project status.
 If Web work materially changes current release state, product architecture, routing, privacy behavior or the active gate, update canonical DCS `STATUS.md` in the corresponding control-plane change or explicitly report that it is pending.
 
 Model-specific adapters must remain thin and must not duplicate mutable project state.
+
+## Presentation boundaries
+
+- Keep the home exhibition styling isolated from calculation and journey modules; visual refinements must preserve the two independent entry paths.

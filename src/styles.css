@@ -68,6 +68,11 @@
 
 :root {
   --radius: 0.25rem;
+  --exhibition-background: oklch(0.18 0.003 80);
+  --exhibition-foreground: oklch(0.94 0.01 85);
+  --exhibition-muted: oklch(0.76 0.008 85);
+  --exhibition-line: oklch(0.6 0.006 85 / 40%);
+  --exhibition-accent: oklch(0.84 0.035 85);
   --background: oklch(0.16 0.031 262);
   --foreground: oklch(0.93 0.014 85);
   --card: oklch(0.205 0.032 263);

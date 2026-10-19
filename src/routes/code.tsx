@@ -23,6 +23,8 @@ export const Route = createFileRoute("/code")({
         property: "og:description",
         content: "Карта открывается по одному ключу: душа, действие, реализация, тень, вектор.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: CodePage,

@@ -14,7 +14,7 @@ const searchSchema = z.object({
   demo: z.string().optional(),
   motion: z.enum(["auto", "reduced"]).optional(),
   material: z.enum(["alabaster", "obsidian"]).optional(),
-  run: z.string().optional(),
+  run: z.coerce.string().optional(),
 });
 
 export const Route = createFileRoute("/donor/artifacts")({

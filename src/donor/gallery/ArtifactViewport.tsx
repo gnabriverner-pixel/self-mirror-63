@@ -1,7 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
 /** Independent document viewport preserves actual CSS media-query behavior. */
-export function ArtifactViewport({ width, src, title }: { width: number; src: string; title: string }) {
+export function ArtifactViewport({
+  width,
+  src,
+  title,
+}: {
+  width: number;
+  src: string;
+  title: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [available, setAvailable] = useState(0);
   useEffect(() => {
@@ -17,7 +25,15 @@ export function ArtifactViewport({ width, src, title }: { width: number; src: st
   const height = 900;
   return (
     <div ref={ref} className="gallery-viewport" style={{ height: height * scale }}>
-      {available > 0 && <iframe title={title} src={src} width={width} height={height} style={{ transform: `scale(${scale})` }} />}
+      {available > 0 && (
+        <iframe
+          title={title}
+          src={src}
+          width={width}
+          height={height}
+          style={{ transform: `scale(${scale})` }}
+        />
+      )}
     </div>
   );
 }

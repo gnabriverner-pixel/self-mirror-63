@@ -22,7 +22,13 @@ const hash = (value: string) => {
 const point = (seed: number, offset: number, min: number, span: number) =>
   min + ((seed >>> offset) % span);
 
-export function MythArtifact({ answers, title, keyName, keyLine, motion = "auto" }: MythArtifactProps) {
+export function MythArtifact({
+  answers,
+  title,
+  keyName,
+  keyLine,
+  motion = "auto",
+}: MythArtifactProps) {
   const [revealed, setRevealed] = useState(false);
   const geometry = useMemo(() => {
     const seed = hash(Object.values(answers).join("|"));

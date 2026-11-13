@@ -14,6 +14,7 @@ import { Route as CodeRouteImport } from './routes/code'
 import { Route as MeetingRouteImport } from './routes/meeting'
 import { Route as MythRouteImport } from './routes/myth'
 import { Route as DonorArchetypesRouteImport } from './routes/donor.archetypes'
+import { Route as DonorArtifactsRouteImport } from './routes/donor.artifacts'
 import { Route as DonorPersonalReliefV2RouteImport } from './routes/donor.personal-relief-v2'
 import { Route as DonorSymbolicPortraitRouteImport } from './routes/donor.symbolic-portrait'
 
@@ -42,6 +43,11 @@ const DonorArchetypesRoute = DonorArchetypesRouteImport.update({
   path: '/donor/archetypes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DonorArtifactsRoute = DonorArtifactsRouteImport.update({
+  id: '/donor/artifacts',
+  path: '/donor/artifacts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DonorPersonalReliefV2Route = DonorPersonalReliefV2RouteImport.update({
   id: '/donor/personal-relief-v2',
   path: '/donor/personal-relief-v2',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/meeting': typeof MeetingRoute
   '/myth': typeof MythRoute
   '/donor/archetypes': typeof DonorArchetypesRoute
+  '/donor/artifacts': typeof DonorArtifactsRoute
   '/donor/personal-relief-v2': typeof DonorPersonalReliefV2Route
   '/donor/symbolic-portrait': typeof DonorSymbolicPortraitRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/meeting': typeof MeetingRoute
   '/myth': typeof MythRoute
   '/donor/archetypes': typeof DonorArchetypesRoute
+  '/donor/artifacts': typeof DonorArtifactsRoute
   '/donor/personal-relief-v2': typeof DonorPersonalReliefV2Route
   '/donor/symbolic-portrait': typeof DonorSymbolicPortraitRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/meeting': typeof MeetingRoute
   '/myth': typeof MythRoute
   '/donor/archetypes': typeof DonorArchetypesRoute
+  '/donor/artifacts': typeof DonorArtifactsRoute
   '/donor/personal-relief-v2': typeof DonorPersonalReliefV2Route
   '/donor/symbolic-portrait': typeof DonorSymbolicPortraitRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/meeting'
     | '/myth'
     | '/donor/archetypes'
+    | '/donor/artifacts'
     | '/donor/personal-relief-v2'
     | '/donor/symbolic-portrait'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/meeting'
     | '/myth'
     | '/donor/archetypes'
+    | '/donor/artifacts'
     | '/donor/personal-relief-v2'
     | '/donor/symbolic-portrait'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/meeting'
     | '/myth'
     | '/donor/archetypes'
+    | '/donor/artifacts'
     | '/donor/personal-relief-v2'
     | '/donor/symbolic-portrait'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   MeetingRoute: typeof MeetingRoute
   MythRoute: typeof MythRoute
   DonorArchetypesRoute: typeof DonorArchetypesRoute
+  DonorArtifactsRoute: typeof DonorArtifactsRoute
   DonorPersonalReliefV2Route: typeof DonorPersonalReliefV2Route
   DonorSymbolicPortraitRoute: typeof DonorSymbolicPortraitRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DonorArchetypesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/donor/artifacts': {
+      id: '/donor/artifacts'
+      path: '/donor/artifacts'
+      fullPath: '/donor/artifacts'
+      preLoaderRoute: typeof DonorArtifactsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/donor/personal-relief-v2': {
       id: '/donor/personal-relief-v2'
       path: '/donor/personal-relief-v2'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   MeetingRoute: MeetingRoute,
   MythRoute: MythRoute,
   DonorArchetypesRoute: DonorArchetypesRoute,
+  DonorArtifactsRoute: DonorArtifactsRoute,
   DonorPersonalReliefV2Route: DonorPersonalReliefV2Route,
   DonorSymbolicPortraitRoute: DonorSymbolicPortraitRoute,
 }

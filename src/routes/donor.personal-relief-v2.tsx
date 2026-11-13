@@ -159,7 +159,9 @@ function DonorPersonalRelief() {
       </section>
 
       <nav className="mt-20 flex flex-wrap gap-5 border-t border-border/60 pt-10 text-xs uppercase tracking-wider-xs">
-        <Link to="/donor/artifacts" className="text-gold hover:opacity-80">Галерея артефактов</Link>
+        <Link to="/donor/artifacts" className="text-gold hover:opacity-80">
+          Галерея артефактов
+        </Link>
         <Link to="/donor/archetypes" className="text-gold hover:opacity-80">
           Девять объектов
         </Link>

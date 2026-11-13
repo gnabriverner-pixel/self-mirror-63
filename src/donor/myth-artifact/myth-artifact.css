@@ -259,3 +259,15 @@
     animation: none !important;
   }
 }
+
+.ma-artifact[data-motion="reduced"]
+  :is(.ma-field, .ma-veil, .ma-memory, .ma-key, .ma-exit, .ma-inscription) {
+  opacity: 1;
+  transition: none;
+}
+.ma-artifact[data-motion="reduced"] .ma-inscription {
+  transform: none;
+}
+.ma-artifact[data-motion="reduced"] .ma-light {
+  animation: none;
+}

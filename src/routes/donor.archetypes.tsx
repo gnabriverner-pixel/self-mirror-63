@@ -140,6 +140,9 @@ function DonorArchetypes() {
       </section>
 
       <nav className="mt-20 flex flex-wrap gap-4 border-t border-border/60 pt-10 text-xs uppercase tracking-wider-xs">
+        <Link to="/donor/artifacts" className="text-gold hover:opacity-80">
+          Галерея артефактов →
+        </Link>
         <Link to="/donor/symbolic-portrait" className="text-gold hover:opacity-80">
           Символический портрет →
         </Link>

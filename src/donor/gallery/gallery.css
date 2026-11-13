@@ -26,6 +26,8 @@
   transform-origin: top left;
 }
 .gallery-select {
+  min-width: 0;
+  max-width: 100%;
   width: 100%;
   min-height: 44px;
   background: var(--background);
@@ -35,6 +37,8 @@
   padding: 8px 12px;
   font-size: 14px;
 }
+
+main:has(.gallery-viewport) section { min-width: 0; }
 .gallery-select:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 3px;

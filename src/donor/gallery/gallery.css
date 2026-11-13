@@ -38,7 +38,9 @@
   font-size: 14px;
 }
 
-main:has(.gallery-viewport) section { min-width: 0; }
+main:has(.gallery-viewport) section {
+  min-width: 0;
+}
 .gallery-select:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 3px;

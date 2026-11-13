@@ -78,3 +78,4 @@ Model-specific adapters must remain thin and must not duplicate mutable project 
 ## Presentation boundaries
 
 - Keep the home exhibition styling isolated from calculation and journey modules; visual refinements must preserve the two independent entry paths.
+- Keep artifact-gallery previews in isolated documents with explicit viewport widths and lab-only fixtures, so responsive comparisons never read or overwrite journey progress.

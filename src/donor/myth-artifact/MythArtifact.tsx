@@ -7,6 +7,7 @@ type MythArtifactProps = {
   title: string;
   keyName: string;
   keyLine: string;
+  motion?: "auto" | "reduced";
 };
 
 const hash = (value: string) => {
@@ -21,7 +22,7 @@ const hash = (value: string) => {
 const point = (seed: number, offset: number, min: number, span: number) =>
   min + ((seed >>> offset) % span);
 
-export function MythArtifact({ answers, title, keyName, keyLine }: MythArtifactProps) {
+export function MythArtifact({ answers, title, keyName, keyLine, motion = "auto" }: MythArtifactProps) {
   const [revealed, setRevealed] = useState(false);
   const geometry = useMemo(() => {
     const seed = hash(Object.values(answers).join("|"));
@@ -35,19 +36,19 @@ export function MythArtifact({ answers, title, keyName, keyLine }: MythArtifactP
 
   useEffect(() => {
     const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
+    if (reduced || motion === "reduced") {
       setRevealed(true);
       return;
     }
     setRevealed(false);
     const timer = window.setTimeout(() => setRevealed(true), 2400);
     return () => window.clearTimeout(timer);
-  }, [geometry.seed]);
+  }, [geometry.seed, motion]);
 
   const summary = `Личный миф «${title}». Четыре образа собраны в один рельеф: туман — ${answers.fog}; текущее состояние — ${answers.state}; живой момент — ${answers.alive}; недостающее движение — ${answers.missing}. Центральный ключ — ${keyName}.`;
 
   return (
-    <figure className="ma-artifact" data-revealed={revealed ? "yes" : "no"}>
+    <figure className="ma-artifact" data-revealed={revealed ? "yes" : "no"} data-motion={motion}>
       <div className="ma-surface" role="img" aria-label={summary}>
         <div className="ma-stone" aria-hidden="true" />
         <div className="ma-heading">

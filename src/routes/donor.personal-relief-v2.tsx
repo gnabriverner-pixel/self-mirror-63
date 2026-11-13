@@ -41,7 +41,8 @@ function DonorPersonalRelief() {
   const [focus, setFocus] = useState<ReliefSlot | null>(null);
   const [demoIndex, setDemoIndex] = useState(0);
 
-  const demo = DEMO_RELIEFS[demoIndex]!;
+  const demo = DEMO_RELIEFS[demoIndex] ?? DEMO_RELIEFS[0];
+  if (!demo) return null;
   const positions = demoPositions(demo);
 
   const replay = () => {
@@ -158,6 +159,7 @@ function DonorPersonalRelief() {
       </section>
 
       <nav className="mt-20 flex flex-wrap gap-5 border-t border-border/60 pt-10 text-xs uppercase tracking-wider-xs">
+        <Link to="/donor/artifacts" className="text-gold hover:opacity-80">Галерея артефактов</Link>
         <Link to="/donor/archetypes" className="text-gold hover:opacity-80">
           Девять объектов
         </Link>

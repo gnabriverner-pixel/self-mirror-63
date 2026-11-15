@@ -17,6 +17,7 @@ import { Route as DonorArchetypesRouteImport } from './routes/donor.archetypes'
 import { Route as DonorArtifactsRouteImport } from './routes/donor.artifacts'
 import { Route as DonorPersonalReliefV2RouteImport } from './routes/donor.personal-relief-v2'
 import { Route as DonorSymbolicPortraitRouteImport } from './routes/donor.symbolic-portrait'
+import { Route as ApiPublicCodeQuestionRouteImport } from './routes/api/public/code-question'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +59,11 @@ const DonorSymbolicPortraitRoute = DonorSymbolicPortraitRouteImport.update({
   path: '/donor/symbolic-portrait',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicCodeQuestionRoute = ApiPublicCodeQuestionRouteImport.update({
+  id: '/api/public/code-question',
+  path: '/api/public/code-question',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/donor/artifacts': typeof DonorArtifactsRoute
   '/donor/personal-relief-v2': typeof DonorPersonalReliefV2Route
   '/donor/symbolic-portrait': typeof DonorSymbolicPortraitRoute
+  '/api/public/code-question': typeof ApiPublicCodeQuestionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/donor/artifacts': typeof DonorArtifactsRoute
   '/donor/personal-relief-v2': typeof DonorPersonalReliefV2Route
   '/donor/symbolic-portrait': typeof DonorSymbolicPortraitRoute
+  '/api/public/code-question': typeof ApiPublicCodeQuestionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/donor/artifacts': typeof DonorArtifactsRoute
   '/donor/personal-relief-v2': typeof DonorPersonalReliefV2Route
   '/donor/symbolic-portrait': typeof DonorSymbolicPortraitRoute
+  '/api/public/code-question': typeof ApiPublicCodeQuestionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/donor/artifacts'
     | '/donor/personal-relief-v2'
     | '/donor/symbolic-portrait'
+    | '/api/public/code-question'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/donor/artifacts'
     | '/donor/personal-relief-v2'
     | '/donor/symbolic-portrait'
+    | '/api/public/code-question'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/donor/artifacts'
     | '/donor/personal-relief-v2'
     | '/donor/symbolic-portrait'
+    | '/api/public/code-question'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +144,7 @@ export interface RootRouteChildren {
   DonorArtifactsRoute: typeof DonorArtifactsRoute
   DonorPersonalReliefV2Route: typeof DonorPersonalReliefV2Route
   DonorSymbolicPortraitRoute: typeof DonorSymbolicPortraitRoute
+  ApiPublicCodeQuestionRoute: typeof ApiPublicCodeQuestionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DonorSymbolicPortraitRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/code-question': {
+      id: '/api/public/code-question'
+      path: '/api/public/code-question'
+      fullPath: '/api/public/code-question'
+      preLoaderRoute: typeof ApiPublicCodeQuestionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +224,7 @@ const rootRouteChildren: RootRouteChildren = {
   DonorArtifactsRoute: DonorArtifactsRoute,
   DonorPersonalReliefV2Route: DonorPersonalReliefV2Route,
   DonorSymbolicPortraitRoute: DonorSymbolicPortraitRoute,
+  ApiPublicCodeQuestionRoute: ApiPublicCodeQuestionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

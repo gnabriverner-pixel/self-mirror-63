@@ -117,9 +117,15 @@ export async function handleCodeQuestion(request: Request) {
         controller.close();
       }
     },
-    cancel: async () => { await iterator.return?.(); },
+    cancel: async () => {
+      await iterator.return?.();
+    },
   });
   return new Response(stream, {
-    headers: { "Content-Type": "application/x-ndjson", "Cache-Control": "no-store", ...(getRunId() ? { "X-Lovable-AIG-Run-ID": getRunId() ?? "" } : {}) },
+    headers: {
+      "Content-Type": "application/x-ndjson",
+      "Cache-Control": "no-store",
+      ...(getRunId() ? { "X-Lovable-AIG-Run-ID": getRunId() ?? "" } : {}),
+    },
   });
 }

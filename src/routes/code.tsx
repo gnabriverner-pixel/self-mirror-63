@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArchetypeEmblem } from "@/donor/archetype-art";
 import { PracticeCard } from "@/components/mirror/PracticeCard";
 import { CodeRelief } from "@/components/mirror/CodeRelief";
+import { CodeQuestion } from "@/components/mirror/CodeQuestion";
 import { useJourney } from "@/lib/journey";
 import { buildChart, formatDate, meeting, tensionText, type Position } from "@/lib/numerology";
 
@@ -299,6 +300,7 @@ function CodePage() {
             </p>
           </div>
           {step === 8 && <NextButton label="Проверить на своей жизни" />}
+          <CodeQuestion key={d} chart={chart} />
         </Reveal>
       )}
 

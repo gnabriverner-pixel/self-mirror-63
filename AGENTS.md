@@ -79,3 +79,4 @@ Model-specific adapters must remain thin and must not duplicate mutable project 
 
 - Keep the home exhibition styling isolated from calculation and journey modules; visual refinements must preserve the two independent entry paths.
 - Keep artifact-gallery previews in isolated documents with explicit viewport widths and lab-only fixtures, so responsive comparisons never read or overwrite journey progress.
+- Code questions stream through a same-origin server route using Lovable AI Gateway Responses; send only the question and five position numbers, keep secrets/prompts server-only, and never persist question text or birth dates. Persist terminal gateway access blocks separately so reloads cannot replay them.

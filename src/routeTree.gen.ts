@@ -15,6 +15,7 @@ import { Route as MeetingRouteImport } from './routes/meeting'
 import { Route as MythRouteImport } from './routes/myth'
 import { Route as DonorArchetypesRouteImport } from './routes/donor.archetypes'
 import { Route as DonorArtifactsRouteImport } from './routes/donor.artifacts'
+import { Route as DonorCosmosRouteImport } from './routes/donor.cosmos'
 import { Route as DonorPersonalReliefV2RouteImport } from './routes/donor.personal-relief-v2'
 import { Route as DonorSymbolicPortraitRouteImport } from './routes/donor.symbolic-portrait'
 import { Route as ApiPublicCodeQuestionRouteImport } from './routes/api/public/code-question'
@@ -49,6 +50,11 @@ const DonorArtifactsRoute = DonorArtifactsRouteImport.update({
   path: '/donor/artifacts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DonorCosmosRoute = DonorCosmosRouteImport.update({
+  id: '/donor/cosmos',
+  path: '/donor/cosmos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DonorPersonalReliefV2Route = DonorPersonalReliefV2RouteImport.update({
   id: '/donor/personal-relief-v2',
   path: '/donor/personal-relief-v2',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/myth': typeof MythRoute
   '/donor/archetypes': typeof DonorArchetypesRoute
   '/donor/artifacts': typeof DonorArtifactsRoute
+  '/donor/cosmos': typeof DonorCosmosRoute
   '/donor/personal-relief-v2': typeof DonorPersonalReliefV2Route
   '/donor/symbolic-portrait': typeof DonorSymbolicPortraitRoute
   '/api/public/code-question': typeof ApiPublicCodeQuestionRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/myth': typeof MythRoute
   '/donor/archetypes': typeof DonorArchetypesRoute
   '/donor/artifacts': typeof DonorArtifactsRoute
+  '/donor/cosmos': typeof DonorCosmosRoute
   '/donor/personal-relief-v2': typeof DonorPersonalReliefV2Route
   '/donor/symbolic-portrait': typeof DonorSymbolicPortraitRoute
   '/api/public/code-question': typeof ApiPublicCodeQuestionRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/myth': typeof MythRoute
   '/donor/archetypes': typeof DonorArchetypesRoute
   '/donor/artifacts': typeof DonorArtifactsRoute
+  '/donor/cosmos': typeof DonorCosmosRoute
   '/donor/personal-relief-v2': typeof DonorPersonalReliefV2Route
   '/donor/symbolic-portrait': typeof DonorSymbolicPortraitRoute
   '/api/public/code-question': typeof ApiPublicCodeQuestionRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/myth'
     | '/donor/archetypes'
     | '/donor/artifacts'
+    | '/donor/cosmos'
     | '/donor/personal-relief-v2'
     | '/donor/symbolic-portrait'
     | '/api/public/code-question'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/myth'
     | '/donor/archetypes'
     | '/donor/artifacts'
+    | '/donor/cosmos'
     | '/donor/personal-relief-v2'
     | '/donor/symbolic-portrait'
     | '/api/public/code-question'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/myth'
     | '/donor/archetypes'
     | '/donor/artifacts'
+    | '/donor/cosmos'
     | '/donor/personal-relief-v2'
     | '/donor/symbolic-portrait'
     | '/api/public/code-question'
@@ -142,6 +154,7 @@ export interface RootRouteChildren {
   MythRoute: typeof MythRoute
   DonorArchetypesRoute: typeof DonorArchetypesRoute
   DonorArtifactsRoute: typeof DonorArtifactsRoute
+  DonorCosmosRoute: typeof DonorCosmosRoute
   DonorPersonalReliefV2Route: typeof DonorPersonalReliefV2Route
   DonorSymbolicPortraitRoute: typeof DonorSymbolicPortraitRoute
   ApiPublicCodeQuestionRoute: typeof ApiPublicCodeQuestionRoute
@@ -191,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DonorArtifactsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/donor/cosmos': {
+      id: '/donor/cosmos'
+      path: '/donor/cosmos'
+      fullPath: '/donor/cosmos'
+      preLoaderRoute: typeof DonorCosmosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/donor/personal-relief-v2': {
       id: '/donor/personal-relief-v2'
       path: '/donor/personal-relief-v2'
@@ -222,6 +242,7 @@ const rootRouteChildren: RootRouteChildren = {
   MythRoute: MythRoute,
   DonorArchetypesRoute: DonorArchetypesRoute,
   DonorArtifactsRoute: DonorArtifactsRoute,
+  DonorCosmosRoute: DonorCosmosRoute,
   DonorPersonalReliefV2Route: DonorPersonalReliefV2Route,
   DonorSymbolicPortraitRoute: DonorSymbolicPortraitRoute,
   ApiPublicCodeQuestionRoute: ApiPublicCodeQuestionRoute,

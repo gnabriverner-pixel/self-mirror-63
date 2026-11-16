@@ -85,6 +85,9 @@ function ArtifactGallery() {
         <Button asChild variant="ghost" className="min-h-11">
           <Link to="/donor/personal-relief-v2">Personal Relief</Link>
         </Button>
+        <Button asChild variant="ghost" className="min-h-11 text-gold">
+          <Link to="/donor/cosmos">Пространство возможного</Link>
+        </Button>
       </nav>
       <p className="mt-8 text-xs text-gold">DONOR LAB · DEMO</p>
       <h1 className="mt-3 text-4xl sm:text-6xl">Галерея артефактов</h1>

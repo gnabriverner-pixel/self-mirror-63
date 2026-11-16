@@ -95,6 +95,26 @@
   --gold: oklch(0.8 0.115 74);
   --gold-soft: oklch(0.72 0.07 72 / 55%);
   --veil: oklch(0.98 0.01 85 / 8%);
+  --cosmos-background: oklch(0.105 0.008 75);
+  --cosmos-foreground: oklch(0.94 0.012 82);
+  --cosmos-muted: oklch(0.73 0.014 82);
+  --cosmos-faint: oklch(0.58 0.012 82);
+  --cosmos-accent: oklch(0.84 0.07 78);
+  --cosmos-line: oklch(0.76 0.025 78 / 22%);
+  --cosmos-line-strong: oklch(0.84 0.055 78 / 52%);
+  --cosmos-selected: oklch(0.84 0.055 78 / 7%);
+  --cosmos-star: oklch(0.94 0.025 82);
+  --cosmos-core-high: oklch(0.91 0.025 82);
+  --cosmos-core-mid: oklch(0.64 0.035 78);
+  --cosmos-core-low: oklch(0.24 0.018 75);
+  --cosmos-core-shadow: oklch(0.84 0.07 78 / 18%);
+  --cosmos-core-edge: oklch(0.94 0.025 82 / 65%);
+  --cosmos-hero-shade:
+    linear-gradient(180deg, oklch(0.08 0.008 75 / 15%) 25%, oklch(0.08 0.008 75 / 92%) 100%),
+    linear-gradient(90deg, oklch(0.08 0.008 75 / 80%) 0%, transparent 72%);
+  --cosmos-sky-background:
+    radial-gradient(60% 45% at 32% 38%, oklch(0.23 0.025 75 / 38%), transparent 100%),
+    var(--cosmos-background);
   --gradient-deep:
     radial-gradient(120% 90% at 50% -10%, oklch(0.3 0.06 268) 0%, transparent 60%),
     linear-gradient(180deg, oklch(0.16 0.031 262), oklch(0.13 0.025 265));

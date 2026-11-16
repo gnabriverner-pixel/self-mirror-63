@@ -23,7 +23,7 @@
   min-height: 100svh;
   align-items: flex-end;
   overflow: hidden;
-  padding: 7rem 1.25rem 4.5rem;
+  padding: 7rem 1.25rem 5.5rem;
 }
 
 .cosmos-hero-image,
@@ -109,11 +109,11 @@
 }
 
 .cosmos-hero h1 {
-  margin: 1rem 0 0;
+  margin: 1.25rem 0 0;
   font-size: clamp(3.25rem, 13vw, 7.5rem);
   font-weight: 300;
   letter-spacing: -0.045em;
-  line-height: 0.84;
+  line-height: 0.9;
 }
 
 .cosmos-hero h1 span,
@@ -128,10 +128,10 @@
 
 .cosmos-intro {
   max-width: 30rem;
-  margin: 1.75rem 0 0;
+  margin: 2rem 0 0;
   color: var(--cosmos-muted);
   font-size: 0.875rem;
-  line-height: 1.75;
+  line-height: 1.85;
 }
 
 .cosmos-primary-link {
@@ -139,7 +139,7 @@
   min-height: 48px;
   align-items: center;
   gap: 2.5rem;
-  margin-top: 1.75rem;
+  margin-top: 2.25rem;
   border-bottom: 1px solid var(--cosmos-line-strong);
   color: var(--cosmos-foreground);
   font-size: 0.75rem;
@@ -157,7 +157,7 @@
 
 .possibility-sky {
   position: relative;
-  padding: 6rem 1.25rem;
+  padding: 8rem 1.25rem;
   border-top: 1px solid var(--cosmos-line);
   background: var(--cosmos-sky-background);
 }
@@ -169,16 +169,16 @@
 }
 
 .possibility-heading h2 {
-  margin: 1rem 0 0;
+  margin: 1.25rem 0 0;
   font-size: clamp(2.75rem, 9vw, 5.75rem);
   letter-spacing: -0.035em;
-  line-height: 0.95;
+  line-height: 1.02;
   text-wrap: balance;
 }
 
 .possibility-heading > p:last-child {
   max-width: 30rem;
-  margin: 1.25rem auto 0;
+  margin: 1.5rem auto 0;
   color: var(--cosmos-muted);
   font-size: 0.8125rem;
   line-height: 1.75;
@@ -187,8 +187,8 @@
 .possibility-layout {
   display: grid;
   max-width: 80rem;
-  margin: 3.5rem auto 0;
-  gap: 2rem;
+  margin: 5rem auto 0;
+  gap: 4rem;
 }
 
 .constellation-figure {
@@ -278,7 +278,7 @@
 
 .constellation-figure figcaption {
   max-width: 31rem;
-  margin: -0.5rem auto 0;
+  margin: 1rem auto 0;
 }
 
 .constellation-number {
@@ -298,25 +298,26 @@
 }
 
 .constellation-question {
-  margin: 0.85rem 0 0;
+  margin: 1.25rem 0 0;
   color: var(--cosmos-muted);
   font-size: 0.75rem;
-  line-height: 1.6;
+  line-height: 1.75;
 }
 
 .possibility-options {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.25rem;
   border-top: 1px solid var(--cosmos-line);
 }
 
 .possibility-options button {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  min-height: 56px;
+  min-height: 64px;
   align-items: center;
   gap: 0.65rem;
-  padding: 0.75rem 0.4rem;
+  padding: 1rem 0.25rem;
   border: 0;
   border-bottom: 1px solid var(--cosmos-line);
   background: transparent;
@@ -330,7 +331,7 @@
 }
 
 .possibility-options button:nth-child(odd) {
-  border-right: 1px solid var(--cosmos-line);
+  border-right: 0;
 }
 
 .possibility-options button > span {
@@ -356,22 +357,22 @@
 }
 
 .dream-form {
-  margin-top: 2.5rem;
+  margin-top: 4rem;
 }
 
 .dream-form label {
   display: block;
   font-family: var(--font-display);
-  font-size: 1.65rem;
+  font-size: 1.75rem;
   font-weight: 300;
-  line-height: 1.15;
+  line-height: 1.25;
 }
 
 .dream-form textarea {
   box-sizing: border-box;
   width: 100%;
-  min-height: 7rem;
-  margin-top: 1rem;
+  min-height: 8rem;
+  margin-top: 1.5rem;
   resize: vertical;
   border: 0;
   border-bottom: 1px solid var(--cosmos-line-strong);
@@ -425,8 +426,8 @@
 
 .dream-result {
   min-height: 8.5rem;
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
+  margin-top: 4rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--cosmos-line);
 }
 
@@ -454,20 +455,24 @@
 }
 
 .cosmos-manifesto {
-  padding: 5rem 1.25rem;
+  padding: 8rem 1.25rem;
   border-top: 1px solid var(--cosmos-line);
+}
+
+.cosmos-manifesto > .cosmos-kicker {
+  margin-bottom: 3rem;
 }
 
 .cosmos-manifesto > p:not(.cosmos-kicker) {
   max-width: 72rem;
   margin: 0;
-  padding: 1.75rem 0;
+  padding: 2.5rem 0;
   border-bottom: 1px solid var(--cosmos-line);
   font-family: var(--font-display);
   font-size: clamp(2rem, 7vw, 4.75rem);
   font-weight: 300;
   letter-spacing: -0.025em;
-  line-height: 1.05;
+  line-height: 1.12;
 }
 
 .cosmos-manifesto > p:nth-child(3) {
@@ -477,7 +482,7 @@
 
 .cosmos-return {
   max-width: 72rem;
-  margin: 3rem auto 0;
+  margin: 5rem auto 0;
   text-align: center;
 }
 
@@ -598,7 +603,7 @@
 
   .possibility-sky,
   .cosmos-manifesto {
-    padding: 8rem 3rem;
+    padding: 10rem 3rem;
   }
 
   .dream-form-footer {
@@ -641,8 +646,8 @@
   .possibility-layout {
     grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
     align-items: center;
-    gap: 5rem;
-    margin-top: 5rem;
+    gap: 8rem;
+    margin-top: 7rem;
   }
 
   .possibility-controls {

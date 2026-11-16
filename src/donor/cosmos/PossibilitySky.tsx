@@ -43,7 +43,7 @@ export function PossibilitySky({ still = false }: PossibilitySkyProps) {
       <header className="possibility-heading">
         <p className="cosmos-kicker">Интерактивная карта возможного</p>
         <h2 id="possibility-title">Что в тебе просится наружу?</h2>
-        <p>Не тест и не диагноз. Просто выбери направление, к которому хочется повернуться.</p>
+        <p>Не тест и не диагноз — просто направление, к которому хочется повернуться.</p>
       </header>
 
       <div className="possibility-layout">

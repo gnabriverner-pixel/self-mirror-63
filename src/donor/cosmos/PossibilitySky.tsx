@@ -23,7 +23,9 @@ export function PossibilitySky({ still = false }: PossibilitySkyProps) {
   const seed = hashPossibility(source);
   const tilt = (seed % 100) - 50;
   const coreRadius = 32 + (seed % 15);
-  const path = points.map((point, index) => `${index === 0 ? "M" : "L"}${point.x} ${point.y}`).join(" ");
+  const path = points
+    .map((point, index) => `${index === 0 ? "M" : "L"}${point.x} ${point.y}`)
+    .join(" ");
 
   function submitDream(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -41,19 +43,12 @@ export function PossibilitySky({ still = false }: PossibilitySkyProps) {
       <header className="possibility-heading">
         <p className="cosmos-kicker">Интерактивная карта возможного</p>
         <h2 id="possibility-title">Что в тебе просится наружу?</h2>
-        <p>
-          Не тест и не диагноз. Просто выбери направление, к которому хочется повернуться.
-        </p>
+        <p>Не тест и не диагноз. Просто выбери направление, к которому хочется повернуться.</p>
       </header>
 
       <div className="possibility-layout">
         <figure className="constellation-figure">
-          <svg
-            key={source}
-            className="constellation-art"
-            viewBox="0 0 640 640"
-            aria-hidden="true"
-          >
+          <svg key={source} className="constellation-art" viewBox="0 0 640 640" aria-hidden="true">
             <defs>
               <radialGradient id={`${id}-core`} cx="35%" cy="28%" r="72%">
                 <stop offset="0%" stopColor="var(--cosmos-core-high)" />
@@ -77,15 +72,12 @@ export function PossibilitySky({ still = false }: PossibilitySkyProps) {
 
             <g className="constellation-lines">
               <path d={path} />
-              <path d={`M${points[0]?.x ?? 320} ${points[0]?.y ?? 320} L320 320 L${points[5]?.x ?? 320} ${points[5]?.y ?? 320}`} />
+              <path
+                d={`M${points[0]?.x ?? 320} ${points[0]?.y ?? 320} L320 320 L${points[5]?.x ?? 320} ${points[5]?.y ?? 320}`}
+              />
             </g>
 
-            <circle
-              className="constellation-core-shadow"
-              cx="320"
-              cy="320"
-              r={coreRadius + 16}
-            />
+            <circle className="constellation-core-shadow" cx="320" cy="320" r={coreRadius + 16} />
             <circle
               className="constellation-core"
               cx="320"
@@ -100,7 +92,9 @@ export function PossibilitySky({ still = false }: PossibilitySkyProps) {
                 <g key={`${point.x}-${point.y}`}>
                   <circle cx={point.x} cy={point.y} r={point.radius} />
                   {index % 3 === 0 && (
-                    <path d={`M${point.x - 9} ${point.y} H${point.x + 9} M${point.x} ${point.y - 9} V${point.y + 9}`} />
+                    <path
+                      d={`M${point.x - 9} ${point.y} H${point.x + 9} M${point.x} ${point.y - 9} V${point.y + 9}`}
+                    />
                   )}
                 </g>
               ))}
@@ -160,8 +154,8 @@ export function PossibilitySky({ still = false }: PossibilitySkyProps) {
                 <p className="cosmos-kicker">Твоя звезда появилась</p>
                 <blockquote>«{committedDream}»</blockquote>
                 <p>
-                  Это не обещание и не план. Это направление, которое стало видимым — потому что
-                  ты его увидел.
+                  Это не обещание и не план. Это направление, которое стало видимым — потому что ты
+                  его увидел.
                 </p>
               </>
             ) : (

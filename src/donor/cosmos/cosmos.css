@@ -324,7 +324,9 @@
   cursor: pointer;
   font-size: 0.8125rem;
   text-align: left;
-  transition: color 250ms ease, background 250ms ease;
+  transition:
+    color 250ms ease,
+    background 250ms ease;
 }
 
 .possibility-options button:nth-child(odd) {

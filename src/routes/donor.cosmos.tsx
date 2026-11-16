@@ -16,7 +16,8 @@ export const Route = createFileRoute("/donor/cosmos")({
       { property: "og:title", content: "Пространство возможного — Зеркало себя" },
       {
         property: "og:description",
-        content: "Не предсказание. Приглашение увидеть в себе больше пространства, свободы и возможного.",
+        content:
+          "Не предсказание. Приглашение увидеть в себе больше пространства, свободы и возможного.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -69,8 +70,8 @@ function CosmosPage() {
             <em>исследовать.</em>
           </h1>
           <p className="cosmos-intro">
-            Здесь ничего не нужно доказывать. Можно на мгновение забыть о пределах — и увидеть,
-            куда хочется расти.
+            Здесь ничего не нужно доказывать. Можно на мгновение забыть о пределах — и увидеть, куда
+            хочется расти.
           </p>
           <a href="#possible" className="cosmos-primary-link">
             Увидеть возможное
@@ -85,7 +86,9 @@ function CosmosPage() {
 
       <section className="cosmos-manifesto" aria-labelledby="manifesto-title">
         <p className="cosmos-kicker">Маленький манифест возможного</p>
-        <h2 id="manifesto-title" className="sr-only">Манифест возможного</h2>
+        <h2 id="manifesto-title" className="sr-only">
+          Манифест возможного
+        </h2>
         <p>Можно не знать пути — и всё равно почувствовать направление.</p>
         <p>Можно начать не с плана, а с любопытства.</p>
         <p>Можно быть собой — и ещё не знать, насколько это много.</p>

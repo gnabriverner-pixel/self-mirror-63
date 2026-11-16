@@ -143,6 +143,9 @@ function DonorArchetypes() {
         <Link to="/donor/artifacts" className="text-gold hover:opacity-80">
           Галерея артефактов →
         </Link>
+        <Link to="/donor/cosmos" className="text-gold hover:opacity-80">
+          Пространство возможного →
+        </Link>
         <Link to="/donor/symbolic-portrait" className="text-gold hover:opacity-80">
           Символический портрет →
         </Link>

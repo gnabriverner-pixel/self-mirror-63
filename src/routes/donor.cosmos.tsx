@@ -3,8 +3,11 @@ import { useState } from "react";
 import { ArrowDown, ArrowLeft, ArrowRight, Pause, Play } from "lucide-react";
 import cosmosHero from "@/assets/cosmos-possibility.jpg";
 import { PossibilitySky } from "@/donor/cosmos";
+import { useJourney } from "@/lib/journey";
 
 export const Route = createFileRoute("/donor/cosmos")({
+  validateSearch: (search: Record<string, unknown>): { from?: "code" } =>
+    search["from"] === "code" ? { from: "code" } : {},
   head: () => ({
     meta: [
       { title: "Пространство возможного — космический эксперимент · Зеркало себя" },
@@ -29,6 +32,9 @@ export const Route = createFileRoute("/donor/cosmos")({
 
 function CosmosPage() {
   const [still, setStill] = useState(false);
+  const { from } = Route.useSearch();
+  const { journey } = useJourney();
+  const returnDate = from === "code" ? journey.birthDate : undefined;
 
   return (
     <main className="cosmos-page" data-still={still ? "yes" : "no"}>
@@ -44,12 +50,18 @@ function CosmosPage() {
         <div className="cosmos-hero-shade" aria-hidden="true" />
 
         <nav className="cosmos-nav" aria-label="Космический эксперимент">
-          <Link to="/" className="cosmos-brand">
-            <ArrowLeft aria-hidden="true" />
-            Зеркало себя
-          </Link>
+          {returnDate ? (
+            <Link to="/code" search={{ d: returnDate }} className="cosmos-brand">
+              <ArrowLeft aria-hidden="true" />К вашей карте
+            </Link>
+          ) : (
+            <Link to="/" className="cosmos-brand">
+              <ArrowLeft aria-hidden="true" />
+              Зеркало себя
+            </Link>
+          )}
           <div>
-            <span>DONOR LAB · EXP 01</span>
+            <span>{from === "code" ? "За пределами карты" : "DONOR LAB · EXP 01"}</span>
             <button
               type="button"
               onClick={() => setStill((value) => !value)}
@@ -94,16 +106,31 @@ function CosmosPage() {
         <p>Надежда — это когда возможное снова становится видимым.</p>
         <div className="cosmos-return">
           <p>Пусть следующий шаг будет не обязанностью, а открытием.</p>
-          <Link to="/">
-            Вернуться к двум зеркалам
-            <ArrowRight aria-hidden="true" />
-          </Link>
+          {from === "code" ? (
+            <Link to="/myth">
+              {journey.mythDone ? "Вернуться к личному мифу" : "Открыть личный миф"}
+              <ArrowRight aria-hidden="true" />
+            </Link>
+          ) : (
+            <Link to="/">
+              Вернуться к двум зеркалам
+              <ArrowRight aria-hidden="true" />
+            </Link>
+          )}
         </div>
       </section>
 
       <footer className="cosmos-footer">
-        <span>Художественный эксперимент DONOR LAB</span>
-        <Link to="/donor/artifacts">Галерея артефактов</Link>
+        <span>
+          {from === "code"
+            ? "Зеркало себя · Пространство возможного"
+            : "Художественный эксперимент DONOR LAB"}
+        </span>
+        {from === "code" ? (
+          <Link to="/">К двум зеркалам</Link>
+        ) : (
+          <Link to="/donor/artifacts">Галерея артефактов</Link>
+        )}
       </footer>
     </main>
   );

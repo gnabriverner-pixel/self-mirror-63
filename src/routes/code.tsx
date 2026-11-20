@@ -4,6 +4,9 @@ import { ArchetypeEmblem } from "@/donor/archetype-art";
 import { PracticeCard } from "@/components/mirror/PracticeCard";
 import { CodeRelief } from "@/components/mirror/CodeRelief";
 import { CodeQuestion } from "@/components/mirror/CodeQuestion";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { canContinueToCosmos } from "@/lib/code-session";
 import { useJourney } from "@/lib/journey";
 import { buildChart, formatDate, meeting, tensionText, type Position } from "@/lib/numerology";
 
@@ -304,7 +307,7 @@ function CodePage() {
         </Reveal>
       )}
 
-      {step >= 9 && (
+      {canContinueToCosmos(step) && (
         <Reveal>
           <div className="mx-auto max-w-2xl">
             <p className="text-center text-xs uppercase tracking-wider-xs text-gold/80">Альберт</p>
@@ -350,6 +353,24 @@ function CodePage() {
               Всё это — интерпретация символической системы, а не утверждение о фактах. Верным
               считается только то, что вы узнаёте в собственной жизни.
             </p>
+            <div className="mt-16 border-t border-border/50 pt-12 text-center">
+              <p className="text-xs uppercase tracking-wider-xs text-gold/80">Дальше — простор</p>
+              <h3 className="mt-5 text-4xl leading-tight">Вы больше своей карты</h3>
+              <p className="mx-auto mt-5 max-w-md text-[17px] leading-relaxed text-foreground/80">
+                Карта — одно из отражений, не предел. Теперь можно оставить числа позади и дать
+                место тому, о чём хочется мечтать.
+              </p>
+              <Button
+                asChild
+                variant="outline"
+                className="mt-8 h-auto min-h-12 max-w-full whitespace-normal border-gold/60 bg-gold/10 px-6 py-4 text-gold hover:bg-gold/20"
+              >
+                <Link to="/donor/cosmos" search={{ from: "code" }}>
+                  Открыть пространство возможного
+                  <ArrowRight aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
             <div className="mt-8 text-center">
               <Link
                 to="/"
